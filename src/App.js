@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import Header from './components/Header'
+import Notification from './components/Notification'
 
 const App = () => {
   return (
     <AppContainer>
       <Header />
+      <Notification />
       
     </AppContainer>
   )
