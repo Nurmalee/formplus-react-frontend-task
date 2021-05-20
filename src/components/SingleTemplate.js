@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-const SingleTemplate = ({category, created, description, link, name}) => {
+const SingleTemplate = ({description, link, name}) => {
     return (
         <TemplateBox>
             <h2>{name}</h2>
-            <p>{description}{description}{description}</p>
+            <p>{description}. This description doesn't contain enough words for proper design rendering so I have decided to inclue this joker.. Hope you don't mind </p>
             <a href={link}>use template</a>
         </TemplateBox>
     )
