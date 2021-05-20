@@ -4,8 +4,15 @@ import SingleTemplate from './SingleTemplate'
 
 const Templates = () => {
     return (
-        <>
-            <TemplateCategory>all templates</TemplateCategory>
+        <>  
+            <TemplatesHeader>
+                <TemplateCategory>all templates</TemplateCategory>
+                <TemplateCount>
+                    {templateData.length}
+                    {templateData.length === 1 ? ' template' : ' templates' }
+                </TemplateCount>
+            </TemplatesHeader>
+
             <TemplatesGrid>
                 {
                     templateData.map((template, index) => {
@@ -22,13 +29,26 @@ const Templates = () => {
 
 export default Templates
 
-const TemplateCategory = styled.header`
-    font-size: 12px;
-    text-transform: capitalize;
+const TemplatesHeader = styled.div`
     padding-bottom: 20px;
-    font-size: 14px;
-    font-weight: 400;
+    display: flex;
+    align-items: center;
+    text-transform: capitalize;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
 `
+
+const TemplateCategory = styled.p`
+    font-weight: 500;
+    font-size: 14px;
+`
+
+const TemplateCount = styled.p`
+    font-weight: 400;
+    font-size: 12px;
+    color: #C4C4C4;
+`
+
 
 const TemplatesGrid = styled.section`
     display: grid;

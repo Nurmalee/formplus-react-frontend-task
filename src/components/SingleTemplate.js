@@ -29,7 +29,7 @@ const TemplateBox = styled.div`
     > h2 {
         padding: 15px;
         padding-bottom: 0;
-        font-size: 16px;
+        font-size: 15px;
         font-weight: 500;
         text-transform: capitalize;
     }
