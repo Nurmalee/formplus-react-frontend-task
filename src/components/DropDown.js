@@ -20,20 +20,20 @@ export default DropDown
 const DropDownFieldSet = styled.fieldset`
     /* width: fit-content; */
     font-size: 9px;
-    padding: 2px 7px 5px 10px;
-    border: 1px solid #C4C4C4;
+    border: 1px solid;
     border-radius: 2px;
     color: #C4C4C4;
 
     > legend {
         padding: 0 2px;
-        margin-left: 2px;
+        margin-left: 15px;
         font-family: 'Poppins', sans-serif;
     }
 
     > select {
         border: none;
         outline: none;
+        padding: 3px 7px 7px 15px;
         background-color: transparent;
         font-size: 13px;
         width: 100%;
