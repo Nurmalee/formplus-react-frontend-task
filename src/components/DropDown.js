@@ -34,6 +34,7 @@ const DropDownFieldSet = styled.fieldset`
     > select {
         border: none;
         outline: none;
+        background-color: transparent;
         font-size: 13px;
         width: 100%;
         font-family: 'Poppins', sans-serif;
