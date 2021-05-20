@@ -14,17 +14,17 @@ const templateReducer = (state = {templates:[]}, action) => {
                 templates: action.payload
             }
 
-        case ACTION.GET_ALL_PRODUCTS_FAILED:
+        case ACTION.FETCH_TEMPLATES_FAILED:
             return {
                 loading: false,
                 error: action.payload
             }
 
         case ACTION.FILTER_TEMPLATES:
-            return templates
+            return state
     
         default:
-            return templates;
+            return state;
     }
 
 }
