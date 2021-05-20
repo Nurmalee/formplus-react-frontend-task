@@ -32,7 +32,7 @@ const TemplateCategory = styled.header`
 
 const TemplatesGrid = styled.section`
     display: grid;
-    gap: 30px;
+    gap: 40px;
 
     @media screen and (min-width: 600px) {
         grid-template-columns: repeat(2, 1fr);

@@ -4,7 +4,7 @@ const SingleTemplate = ({category, created, description, link, name}) => {
     return (
         <TemplateBox>
             <h2>{name}</h2>
-            <p>{description}</p>
+            <p>{description}{description}{description}</p>
             <a href={link}>use template</a>
         </TemplateBox>
     )
