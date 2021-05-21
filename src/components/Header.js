@@ -2,7 +2,11 @@ import styled from 'styled-components'
 import { SearchIcon } from '@heroicons/react/outline'
 import DropDown from './DropDown'
 
-const Header = () => {
+const Header = ({templates}) => {
+    // const dropdownLimks = [...new Set(templates.map(template => template.category))]
+    // const uniqueLinks = dropdownLimks.map(links => links)
+    // console.log(dropdownLimks);
+
     return (
         <HeaderContainer>
 

@@ -2,7 +2,8 @@ import styled from 'styled-components'
 import {templateData} from '../templateData'
 import SingleTemplate from './SingleTemplate'
 
-const Templates = () => {
+const Templates = ({loading, error,  templates }) => {
+
     return (
         <>  
             <TemplatesHeader>
@@ -13,16 +14,30 @@ const Templates = () => {
                 </TemplateCount>
             </TemplatesHeader>
 
-            <TemplatesGrid>
-                {
-                    templateData.map((template, index) => {
-                        return (
-                            <SingleTemplate key={index} {...template} />
-                        )
-                    })
-                }
-                
-            </TemplatesGrid>
+            {/* {
+                loading ? <p>LOADING</p> : error ? <p>{error}</p> :
+          
+                <TemplatesGrid>
+                    {
+                        templateData.map((template, index) => {
+                            return (
+                                <SingleTemplate key={index} {...template} />
+                            )
+                        })
+                    }
+                </TemplatesGrid>
+            
+            } */}
+          
+                <TemplatesGrid>
+                    {
+                        templateData.map((template, index) => {
+                            return (
+                                <SingleTemplate key={index} {...template} />
+                            )
+                        })
+                    }
+                </TemplatesGrid>
         </>
     )
 }
