@@ -24,4 +24,5 @@ const AppContainer = styled.div`
   width: 90vw;
   margin: 0 auto;
   padding: 50px 10px;
+  padding-bottom: 200px;
 `

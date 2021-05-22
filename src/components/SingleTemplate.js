@@ -17,7 +17,6 @@ const TemplateBox = styled.div`
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
     border-radius: 4px;
     border: 1px solid #ddd;
-    font-family: 'Poppins', sans-serif;
     transition: 500ms;
     align-self: flex-start;
 

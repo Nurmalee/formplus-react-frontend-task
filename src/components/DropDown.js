@@ -18,7 +18,6 @@ const DropDown = () => {
 export default DropDown
 
 const DropDownFieldSet = styled.fieldset`
-    /* width: fit-content; */
     font-size: 9px;
     border: 1px solid;
     border-radius: 2px;
@@ -27,7 +26,6 @@ const DropDownFieldSet = styled.fieldset`
     > legend {
         padding: 0 2px;
         margin-left: 15px;
-        font-family: 'Poppins', sans-serif;
     }
 
     > select {
@@ -37,6 +35,5 @@ const DropDownFieldSet = styled.fieldset`
         background-color: transparent;
         font-size: 13px;
         width: 100%;
-        font-family: 'Poppins', sans-serif;
     }
 `

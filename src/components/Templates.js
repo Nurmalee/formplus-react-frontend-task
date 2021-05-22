@@ -3,8 +3,6 @@ import {useSelector, useDispatch} from 'react-redux'
 import {fetchTemplates} from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
-
-import {templateData} from '../templateData'
 import SingleTemplate from './SingleTemplate'
 
 const Templates = () => {
@@ -19,15 +17,15 @@ const Templates = () => {
 
     const indexOfLastTemplate = (currentPage * itemsPerPage) - 1;
     const indexOfFirstTemplate = indexOfLastTemplate - (itemsPerPage - 1);
-    const currentTemplates = templates.slice(indexOfFirstTemplate, (indexOfLastTemplate + 1))
+    const currentTemplates = templates?.slice(indexOfFirstTemplate, (indexOfLastTemplate + 1))
 
     return (
         <>  
             <TemplatesHeader>
                 <TemplateCategory>all templates</TemplateCategory>
                 <TemplateCount>
-                    {templates.length}
-                    {templateData.length === 1 ? ' template' : ' templates' }
+                    {loading ? '' : templates?.length}
+                    {loading ? 'loading templates' : templates?.length === 1 ? ' template' : ' templates' }
                 </TemplateCount>
             </TemplatesHeader>
 
@@ -67,7 +65,6 @@ const TemplatesHeader = styled.div`
     align-items: center;
     text-transform: capitalize;
     justify-content: space-between;
-    font-family: 'Poppins', sans-serif;
 `
 
 const TemplateCategory = styled.p`

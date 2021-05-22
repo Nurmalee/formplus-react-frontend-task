@@ -67,7 +67,6 @@ const HeaderSearch = styled.div`
             border: none;
             outline: none;
             width: 100%;
-            font-family: 'Poppins', sans-serif;
         }
     }
 `
@@ -79,7 +78,6 @@ const HeaderDropDownContainer = styled.div`
     > p {
         font-size: 12px;
         text-transform: capitalize;
-        font-family: 'Poppins', sans-serif;
         align-self: center;
         color: #C4C4C4;
     }
