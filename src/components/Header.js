@@ -1,8 +1,14 @@
+import { useSelector } from 'react-redux'
+
 import styled from 'styled-components'
+
 import { SearchIcon } from '@heroicons/react/outline'
 import DropDown from './DropDown'
 
-const Header = ({templates}) => {
+const Header = () => {
+
+    const {templates} = useSelector(state => state.templates)
+
     // const dropdownLimks = [...new Set(templates.map(template => template.category))]
     // const uniqueLinks = dropdownLimks.map(links => links)
     // console.log(dropdownLimks);

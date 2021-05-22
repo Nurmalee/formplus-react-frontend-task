@@ -1,25 +1,42 @@
+import {useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {fetchTemplates} from '../redux/actionsCreators/templates'
+
 import styled from 'styled-components'
+
 import {templateData} from '../templateData'
 import SingleTemplate from './SingleTemplate'
 
-const Templates = ({loading, error,  templates }) => {
+const Templates = () => {
+
+    const dispatch = useDispatch()
+    const {templates, loading, error} = useSelector(state => state.templates)
+    const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
+
+    useEffect(() => {
+        dispatch(fetchTemplates())
+    }, [dispatch])
+
+    const indexOfLastTemplate = (currentPage * itemsPerPage) - 1;
+    const indexOfFirstTemplate = indexOfLastTemplate - (itemsPerPage - 1);
+    const currentTemplates = templates.slice(indexOfFirstTemplate, (indexOfLastTemplate + 1))
 
     return (
         <>  
             <TemplatesHeader>
                 <TemplateCategory>all templates</TemplateCategory>
                 <TemplateCount>
-                    {templateData.length}
+                    {templates.length}
                     {templateData.length === 1 ? ' template' : ' templates' }
                 </TemplateCount>
             </TemplatesHeader>
 
-            {/* {
+            {
                 loading ? <p>LOADING</p> : error ? <p>{error}</p> :
           
                 <TemplatesGrid>
                     {
-                        templateData.map((template, index) => {
+                        currentTemplates.map((template, index) => {
                             return (
                                 <SingleTemplate key={index} {...template} />
                             )
@@ -27,17 +44,17 @@ const Templates = ({loading, error,  templates }) => {
                     }
                 </TemplatesGrid>
             
-            } */}
+            }
           
-                <TemplatesGrid>
+                {/* <TemplatesGrid>
                     {
-                        templateData.map((template, index) => {
+                        currentTemplates.map((template, index) => {
                             return (
                                 <SingleTemplate key={index} {...template} />
                             )
                         })
                     }
-                </TemplatesGrid>
+                </TemplatesGrid> */}
         </>
     )
 }
