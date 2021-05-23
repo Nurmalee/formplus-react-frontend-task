@@ -2,7 +2,7 @@ import {useState} from 'react'
 
 import { useDispatch, useSelector } from 'react-redux'
 
-import {chevronRightIcon} from '@heroicons/react/outline'
+// import {chevronRightIcon} from '@heroicons/react/outline'
 
 import styled from 'styled-components'
 import {nextPage, previousPage, pageNumberClick} from '../redux/actionsCreators/pagination'
@@ -12,7 +12,7 @@ const Pagination = () => {
 
     const dispatch = useDispatch()
 
-    const {templates} = useSelector(state => state.templates)
+    const {activeTemplates} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
 
     // const [currentPage, setCurrentPage] = useState(1);
@@ -23,7 +23,7 @@ const Pagination = () => {
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
     const pages = [];
-    for (let i = 1; i <= Math.ceil(templates?.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(activeTemplates?.length / itemsPerPage); i++) {
         pages.push(i);
     }
 
@@ -113,8 +113,6 @@ const Pagination = () => {
 export default Pagination
 
 const PaginationContainer = styled.div`
-
-    /* border: 1px solid; */
     margin-top: 100px;
 
     > ul {
@@ -151,7 +149,6 @@ const PaginationContainer = styled.div`
 
             &:first-of-type {
                 margin-right: 8px;
-                /* margin-top: 0; */
             }
         }
     }

@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 
-const DropDown = () => {
+const DropDown = ({legend, options}) => {
     return (
         <DropDownFieldSet>
-            <legend>DropDown</legend>
+            <legend>{legend}</legend>
             <select>
-                <option>All</option>
-                <option>Health</option>
-                <option>E-commerce</option>
-                <option>Education</option>
+                {
+                   options?.map((link, index) => <option key={index}>{link}</option>) 
+                }
             </select>
             
         </DropDownFieldSet>
@@ -26,6 +25,8 @@ const DropDownFieldSet = styled.fieldset`
     > legend {
         padding: 0 2px;
         margin-left: 15px;
+        text-transform: capitalize;
+        color: #555;
     }
 
     > select {
@@ -34,6 +35,7 @@ const DropDownFieldSet = styled.fieldset`
         padding: 3px 7px 7px 15px;
         background-color: transparent;
         font-size: 13px;
-        width: 100%;
+        width: 96%;
+        text-transform: capitalize;
     }
 `

@@ -1,17 +1,20 @@
 import * as ACTION from '../constants'
   
-const templateReducer = (state = {templates:[]}, action) => {
+const templateReducer = (state = {templates:[], activeTemplates: [], searchTerm: ''}, action) => {
     switch (action.type) {
         case ACTION.FETCH_TEMPLATES_LOADING:
             return {
+                ...state,
                 loading: true,
                 templates: []
             }
 
         case ACTION.FETCH_TEMPLATES_SUCCESS:
             return {
+                ...state,
                 loading:false,
-                templates: action.payload
+                templates: action.payload,
+                activeTemplates: action.payload
             }
 
         case ACTION.FETCH_TEMPLATES_FAILED:
@@ -21,7 +24,25 @@ const templateReducer = (state = {templates:[]}, action) => {
             }
 
         case ACTION.FILTER_TEMPLATES:
-            return state
+            let searchedTemplates = state.templates.filter(template => template.category.includes(action.payload));
+
+            if(!action.payload || action.payload === 'All'){
+                return {
+                    ...state,
+                    activeTemplates: state.templates,
+                    searchTerm: 'all'
+                }
+            }
+
+            if(action.payload){
+                return {
+                    ...state,
+                    activeTemplates: searchedTemplates,
+                    searchTerm: action.payload
+                }
+            }
+
+            break;
     
         default:
             return state;

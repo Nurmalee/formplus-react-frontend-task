@@ -13,3 +13,7 @@ export const fetchTemplates = () => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const searchTemplates = (searchValue) => async(dispatch) => {
+    dispatch({type: ACTION.FILTER_TEMPLATES, payload: searchValue})
+}

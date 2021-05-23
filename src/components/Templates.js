@@ -8,7 +8,7 @@ import SingleTemplate from './SingleTemplate'
 const Templates = () => {
 
     const dispatch = useDispatch()
-    const {templates, loading, error} = useSelector(state => state.templates)
+    const {activeTemplates, searchTerm, loading, error} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
 
     useEffect(() => {
@@ -17,15 +17,15 @@ const Templates = () => {
 
     const indexOfLastTemplate = (currentPage * itemsPerPage) - 1;
     const indexOfFirstTemplate = indexOfLastTemplate - (itemsPerPage - 1);
-    const currentTemplates = templates?.slice(indexOfFirstTemplate, (indexOfLastTemplate + 1))
+    const currentTemplates = activeTemplates?.slice(indexOfFirstTemplate, (indexOfLastTemplate + 1))
 
     return (
         <>  
             <TemplatesHeader>
-                <TemplateCategory>all templates</TemplateCategory>
+                <TemplateCategory> {!searchTerm ? 'all templates' : `${searchTerm} templates`}</TemplateCategory>
                 <TemplateCount>
-                    {loading ? '' : templates?.length}
-                    {loading ? 'loading templates' : templates?.length === 1 ? ' template' : ' templates' }
+                    {loading ? '' : activeTemplates?.length}
+                    {loading ? 'loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
                 </TemplateCount>
             </TemplatesHeader>
 
@@ -43,16 +43,6 @@ const Templates = () => {
                 </TemplatesGrid>
             
             }
-          
-                {/* <TemplatesGrid>
-                    {
-                        currentTemplates.map((template, index) => {
-                            return (
-                                <SingleTemplate key={index} {...template} />
-                            )
-                        })
-                    }
-                </TemplatesGrid> */}
         </>
     )
 }

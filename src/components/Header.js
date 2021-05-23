@@ -1,4 +1,6 @@
-import { useSelector } from 'react-redux'
+import {useState} from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import {searchTemplates} from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
 
@@ -7,27 +9,47 @@ import DropDown from './DropDown'
 
 const Header = () => {
 
-    const {templates} = useSelector(state => state.templates)
+    const dispatch = useDispatch()
 
-    // const dropdownLimks = [...new Set(templates.map(template => template.category))]
-    // const uniqueLinks = dropdownLimks.map(links => links)
-    // console.log(dropdownLimks);
+    const {templates} = useSelector(state => state.templates)
+    const [input, setInput] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        dispatch(searchTemplates(input))
+    }
+
+    // const categories = [...new Set(templates?.map(template => template.category))]
+    // const categoriesUno = templates?.filter(template => template.category.includes("Health"))
+    // const categoriesTwo = templates?.filter(template => template.category.includes("Education"))
+    // const categoriesThree = templates?.filter(template => template.category.includes("E-commerce"))
+    // const categoriesRearray = templates?.filter(template => template.category.filter(cat => cat.includes("Health")))
+    // const uniquecategories = ["All", ...categories[0]]
+    // console.log(categories[0], uniquecategories);
+    // console.log(categoriesUno, categoriesTwo, categoriesThree,  categoriesRearray);
+
+     const autoCategories = templates?.map(template => ["All", ...template.category].toString())
+     console.log([...new Set(autoCategories)]);
+
+    //OR LETS JUST DEFINE THE CATEGORIES MANUALLY SINCE THE IS ORDER OF TEMPLATES MAY CHANGE
+    const categories = ["all", "health", "e-commerce", "education"]
+    const order = ["default", "ascending", "descending"]
 
     return (
         <HeaderContainer>
 
             <HeaderSearch>
-                <form>
-                    <input type="text" placeholder="Search Templates"/>
+                <form onSubmit={handleSubmit}>
+                    <input type="text" placeholder="Search Templates" value={input} onChange={(e) => setInput(e.target.value)} />
                 </form>
                 <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
             </HeaderSearch>
 
             <HeaderDropDownContainer>
                 <p>sort by: </p>
-                <DropDown />
-                <DropDown />
-                <DropDown />
+                <DropDown legend="categories" options={categories} />
+                <DropDown legend="order" options={order} />
+                <DropDown legend="date" options={order} />
             </HeaderDropDownContainer>
             
         </HeaderContainer>
@@ -61,7 +83,7 @@ const HeaderSearch = styled.div`
         
         > input {
             flex: 1;
-            padding: 7px 5px;
+            padding: 8px 5px;
             padding-left: 25px;
             font-size: 14px;
             border: none;
