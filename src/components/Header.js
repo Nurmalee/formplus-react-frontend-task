@@ -1,6 +1,6 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {searchTemplates} from '../redux/actionsCreators/templates'
+import { searchedTemplates } from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
 
@@ -12,11 +12,11 @@ const Header = () => {
     const dispatch = useDispatch()
 
     const {templates} = useSelector(state => state.templates)
-    const [input, setInput] = useState('')
+    // const [input, setInput] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(searchTemplates(input))
+    const handleInput = (e) => {
+        // setInput(e.target.value)
+        dispatch(searchedTemplates(e.target.value.toLowerCase()))
     }
 
     // const categories = [...new Set(templates?.map(template => template.category))]
@@ -31,7 +31,7 @@ const Header = () => {
     const autoCategories = templates?.map(template => ["All", ...template.category].toString())
     //  console.log([...new Set(autoCategories)]);
 
-    //OR LETS JUST DEFINE THE CATEGORIES MANUALLY SINCE THE IS ORDER OF TEMPLATES MAY CHANGE
+    //OR LETS JUST DEFINE THE CATEGORIES MANUALLY SINCE THE ORDER OF TEMPLATES MAY CHANGE
     const categories = ["All", "Health", "E-commerce", "Education"]
     const order = ["default", "ascending", "descending"]
 
@@ -39,9 +39,7 @@ const Header = () => {
         <HeaderContainer>
 
             <HeaderSearch>
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Search Templates" value={input} onChange={(e) => setInput(e.target.value)} />
-                </form>
+                <input type="text" placeholder="Search Templates" onChange={handleInput} />
                 <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
             </HeaderSearch>
 
@@ -77,18 +75,18 @@ const HeaderSearch = styled.div`
         margin-bottom: 0;
     }
 
-    > form {
+    > input {
         flex: 1;
-        display: flex;
-        
-        > input {
-            flex: 1;
-            padding: 8px 5px;
-            padding-left: 25px;
-            font-size: 14px;
-            border: none;
-            outline: none;
-            width: 100%;
+        padding: 8px 5px;
+        padding-left: 25px;
+        font-size: 14px;
+        border: 1px solid transparent;
+        outline: none;
+        width: 100%;
+
+        &:focus {
+            box-shadow: 0 0 10px #FFF4EA;
+            border: 1px solid #FFF4EA;
         }
     }
 `

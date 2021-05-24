@@ -28,7 +28,7 @@ const Templates = () => {
                 <TemplateCategory> {!filterBy ? 'all templates' : `${filterBy} templates`}</TemplateCategory>
                 
                 <TemplateCount>
-                    {loading ? '' : activeTemplates?.length}
+                    {loading ? '' : error ? 'No' : activeTemplates?.length}
                     {loading ? 'loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
                 </TemplateCount>
 
@@ -84,9 +84,9 @@ const LoadingImage = styled.div`
 
     > img {
         height: 250px;
+        object-fit: contain;
     }
 `
-
 
 const ErrorNote = styled.div`
     text-align: center;

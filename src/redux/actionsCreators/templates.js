@@ -14,6 +14,11 @@ export const fetchTemplates = () => async (dispatch) => {
     }
 }
 
-export const searchTemplates = (filterBy) => {
+export const filterTemplates = (filterBy) => {
     return({type: ACTION.FILTER_TEMPLATES, payload: filterBy})
+}
+
+
+export const searchedTemplates = (templateName) => {
+    return({type: ACTION.SEARCH_TEMPLATES_BY_NAME, payload: templateName})
 }

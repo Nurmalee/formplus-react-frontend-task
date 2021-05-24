@@ -31,7 +31,7 @@ const templateReducer = (state = initialState, action) => {
             }
 
         case ACTION.FILTER_TEMPLATES:
-            let selectedTemplates = state.templates.filter(template => template.category.includes(action.payload));
+            let selectedTemplates = state.templates?.filter(template => template.category.includes(action.payload));
 
             if(!action.payload || action.payload === 'All'){
                 return {
@@ -48,8 +48,28 @@ const templateReducer = (state = initialState, action) => {
                     filterBy: action.payload
                 }
             }
+
             return state;
-    
+        
+        case ACTION.SEARCH_TEMPLATES_BY_NAME:
+            let searchedTemplates = state.templates?.filter(template => template.name.toLowerCase().includes(action.payload));
+
+            // if(!action.payload){
+            //     return {
+            //         ...state,
+            //         activeTemplates: state.templates,
+            //     }
+            // }
+
+            if(action.payload){
+                return {
+                    ...state,
+                    activeTemplates: searchedTemplates,
+                }
+            }
+
+            return state;
+
         default:
             return state;
     }

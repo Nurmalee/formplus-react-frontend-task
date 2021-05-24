@@ -13,7 +13,6 @@ const paginationReducer = (state = initialState, action) => {
                 currentPage: state.currentPage + 1
             }
 
-
         case ACTION.PREVIOUS_PAGE:
             return {
                 ...state,

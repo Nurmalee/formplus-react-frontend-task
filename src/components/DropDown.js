@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import {useDispatch} from 'react-redux'
-import {searchTemplates} from '../redux/actionsCreators/templates'
+import {filterTemplates} from '../redux/actionsCreators/templates'
 
 const DropDown = ({legend, options}) => {
 
     const dispatch = useDispatch()
 
     const handleSelect = (e) => {
-        dispatch(searchTemplates(e.target.value))
+        dispatch(filterTemplates(e.target.value))
     }
 
     return (
