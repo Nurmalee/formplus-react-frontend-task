@@ -29,7 +29,7 @@ const Templates = () => {
                 
                 <TemplateCount>
                     {loading ? '' : error ? 'No' : activeTemplates?.length}
-                    {loading ? 'loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
+                    {loading ? 'Loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
                 </TemplateCount>
 
             </TemplatesHeader>
@@ -77,13 +77,14 @@ const TemplateCount = styled.p`
     font-weight: 400;
     font-size: 12px;
     color: #C4C4C4;
+    text-transform: capitalize;
 `
 
 const LoadingImage = styled.div`
     text-align: center;
 
     > img {
-        height: 250px;
+        height: 230px;
         object-fit: contain;
     }
 `

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchedTemplates } from '../redux/actionsCreators/templates'
 
@@ -38,18 +38,20 @@ const Header = () => {
     return (
         <HeaderContainer>
 
-            <HeaderSearch>
-                <input type="text" placeholder="Search Templates" onChange={handleInput} />
-                <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
-            </HeaderSearch>
+            <HeaderMain>
+                <HeaderSearch>
+                    <input type="text" placeholder="Search Templates" onChange={handleInput} />
+                    <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
+                </HeaderSearch>
 
-            <HeaderDropDownContainer>
-                <p>sort by: </p>
-                <DropDown legend="categories" options={categories} />
-                <DropDown legend="order" options={order} />
-                <DropDown legend="date" options={order} />
-            </HeaderDropDownContainer>
-            
+                <HeaderDropDownContainer>
+                    <p>sort by: </p>
+                    <DropDown legend="categories" options={categories} />
+                    <DropDown legend="order" options={order} />
+                    <DropDown legend="date" options={order} />
+                </HeaderDropDownContainer>
+            </HeaderMain>
+
         </HeaderContainer>
     )
 }
@@ -57,6 +59,22 @@ const Header = () => {
 export default Header
 
 const HeaderContainer = styled.div`
+    background-color: white;
+    z-index: 100;
+
+    @media screen and (min-width: 600px){
+        position: sticky;
+        top: 0;
+        left: 0;
+    }
+`
+
+const HeaderMain = styled.div`
+    width: 90vw;
+    margin: 0 auto;
+    padding: 20px 10px;
+    padding-top: 40px;
+
     @media screen and (min-width: 850px) {
         display: flex;
         align-items: center;

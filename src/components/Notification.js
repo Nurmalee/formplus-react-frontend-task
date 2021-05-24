@@ -16,7 +16,7 @@ const NotificationContainer = styled.div`
     border-radius: 2px;
     background-color: #FFF4EA;
     padding: 15px 20px;
-    margin: 50px 0;
+    margin: 30px 0;
     margin-bottom: 40px;
     display: flex;
     align-items: center;

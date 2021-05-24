@@ -7,22 +7,24 @@ import Pagination from './components/Pagination'
 const App = () => {
 
   return (
-    <AppContainer>
-
+    <>
       <Header />
-      <Notification />
-      <Templates />
-      <Pagination />
+
+      <Body>
+        <Notification />
+        <Templates />
+        <Pagination />
+      </Body>
       
-    </AppContainer>
+    </>
   )
 }
 
 export default App
 
-const AppContainer = styled.div`
+const Body = styled.section`
   width: 90vw;
   margin: 0 auto;
-  padding: 50px 10px;
+  padding: 10px;
   padding-bottom: 200px;
 `

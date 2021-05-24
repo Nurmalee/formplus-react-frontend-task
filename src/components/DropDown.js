@@ -32,7 +32,7 @@ const DropDownFieldSet = styled.fieldset`
 
     > legend {
         padding: 0 2px;
-        margin-left: 15px;
+        margin-left: 17px;
         text-transform: capitalize;
         color: #555;
     }
