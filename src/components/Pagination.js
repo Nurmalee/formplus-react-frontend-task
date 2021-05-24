@@ -12,11 +12,8 @@ const Pagination = () => {
 
     const dispatch = useDispatch()
 
-    const {activeTemplates} = useSelector(state => state.templates)
+    const {activeTemplates, loading, error} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
-
-    // const [currentPage, setCurrentPage] = useState(1);
-    // const itemsPerPage = 15;
 
     const pageNumberLimit = 4;
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
@@ -28,12 +25,10 @@ const Pagination = () => {
     }
 
     const handlePageNumberClick = (e) => {
-        // setCurrentPage(Number(e.target.id));
         dispatch(pageNumberClick(Number(e.target.id)))
     };
 
     const handleNextbtn = () => {
-        // setCurrentPage(currentPage + 1);
         dispatch(nextPage())
 
         if (currentPage + 1 > maxPageNumberLimit) {
@@ -43,7 +38,6 @@ const Pagination = () => {
     };
     
     const handlePrevbtn = () => {
-        // setCurrentPage(currentPage - 1);
         dispatch(previousPage())
 
         if ((currentPage - 1) % pageNumberLimit === 0) {
@@ -62,9 +56,15 @@ const Pagination = () => {
         pageDecrementBtn = <li onClick={handlePrevbtn}> &hellip; </li>;
     }
 
+
+    //CONDITIONALLY RENDER PAGINATION CONTANER
+    if(loading || error) {
+        return null
+    }
+
     return (
         <PaginationContainer>
-            <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
+            <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}> 
                 prev
             </button>
             

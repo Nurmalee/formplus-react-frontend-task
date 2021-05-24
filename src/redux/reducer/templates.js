@@ -12,7 +12,8 @@ const templateReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: true,
-                templates: []
+                templates: [],
+                filterBy: ''
             }
 
         case ACTION.FETCH_TEMPLATES_SUCCESS:

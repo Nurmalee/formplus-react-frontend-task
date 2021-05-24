@@ -5,10 +5,12 @@ import {fetchTemplates} from '../redux/actionsCreators/templates'
 import styled from 'styled-components'
 import SingleTemplate from './SingleTemplate'
 
+import {ExclamationCircleIcon} from '@heroicons/react/outline'
+
 const Templates = () => {
 
     const dispatch = useDispatch()
-    const {activeTemplates, searchTerm, loading, error} = useSelector(state => state.templates)
+    const {activeTemplates, filterBy, loading, error} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
 
     useEffect(() => {
@@ -22,15 +24,25 @@ const Templates = () => {
     return (
         <>  
             <TemplatesHeader>
-                <TemplateCategory> {!searchTerm ? 'all templates' : `${searchTerm} templates`}</TemplateCategory>
+
+                <TemplateCategory> {!filterBy ? 'all templates' : `${filterBy} templates`}</TemplateCategory>
+                
                 <TemplateCount>
                     {loading ? '' : activeTemplates?.length}
                     {loading ? 'loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
                 </TemplateCount>
+
             </TemplatesHeader>
 
             {
-                loading ? <p>LOADING</p> : error ? <p>{error}</p> :
+                loading ? 
+                    <LoadingImage>
+                        <img src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" alt="loading"/> <p>loading templates...</p> 
+                    </LoadingImage> : 
+                error ? 
+                    <ErrorNote>
+                        <ExclamationCircleIcon style={{height: "100px", color: "#777"}} /> <p>{error}</p> 
+                    </ErrorNote> :
           
                 <TemplatesGrid>
                     { 
@@ -67,6 +79,18 @@ const TemplateCount = styled.p`
     color: #C4C4C4;
 `
 
+const LoadingImage = styled.div`
+    text-align: center;
+
+    > img {
+        height: 250px;
+    }
+`
+
+
+const ErrorNote = styled.div`
+    text-align: center;
+`
 
 const TemplatesGrid = styled.section`
     display: grid;
