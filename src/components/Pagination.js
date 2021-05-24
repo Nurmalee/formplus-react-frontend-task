@@ -64,16 +64,11 @@ const Pagination = () => {
 
     return (
         <PaginationContainer>
+            <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
+                prev
+            </button>
+            
             <ul>
-                {/* <li> */}
-                    <button
-                        onClick={handlePrevbtn}
-                        disabled={currentPage === pages[0] ? true : false}
-                    >
-                        prev page
-                    </button>
-                {/* </li> */}
-
                 {pageDecrementBtn}
 
                 {
@@ -96,15 +91,11 @@ const Pagination = () => {
 
                 {pageIncrementBtn}
 
-                {/* <li> */}
-                    <button
-                    onClick={handleNextbtn}
-                    disabled={currentPage === pages[pages.length - 1] ? true : false}
-                    >
-                   next page
-                    </button>
-                {/* </li> */}
             </ul>
+
+            <button onClick={handleNextbtn} disabled={currentPage === pages[pages.length - 1] ? true : false}>
+                next
+            </button>
             
         </PaginationContainer>
     )
@@ -114,6 +105,9 @@ export default Pagination
 
 const PaginationContainer = styled.div`
     margin-top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     > ul {
         list-style: none;
@@ -138,18 +132,18 @@ const PaginationContainer = styled.div`
                 height: 100%;
             }
         }
+    }
 
-        > button {
-            padding: 3px 10px;
-            margin-left: 5px;
-            margin-top: 10px;
-            font-size: 13px;
-            cursor: pointer;
-            text-transform: capitalize;
+    > button {
+        padding: 3px 10px;
+        margin-left: 5px;
+        margin-top: 10px;
+        font-size: 13px;
+        cursor: pointer;
+        text-transform: capitalize;
 
-            &:first-of-type {
-                margin-right: 8px;
-            }
+        &:first-of-type {
+            margin-right: 8px;
         }
     }
 

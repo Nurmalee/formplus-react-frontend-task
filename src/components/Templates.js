@@ -33,15 +33,14 @@ const Templates = () => {
                 loading ? <p>LOADING</p> : error ? <p>{error}</p> :
           
                 <TemplatesGrid>
-                    {
-                        currentTemplates.map((template, index) => {
+                    { 
+                       currentTemplates.map((template, index) => {
                             return (
                                 <SingleTemplate key={index} {...template} />
                             )
                         })
                     }
-                </TemplatesGrid>
-            
+                </TemplatesGrid>  
             }
         </>
     )

@@ -28,11 +28,11 @@ const Header = () => {
     // console.log(categories[0], uniquecategories);
     // console.log(categoriesUno, categoriesTwo, categoriesThree,  categoriesRearray);
 
-     const autoCategories = templates?.map(template => ["All", ...template.category].toString())
-     console.log([...new Set(autoCategories)]);
+    const autoCategories = templates?.map(template => ["All", ...template.category].toString())
+    //  console.log([...new Set(autoCategories)]);
 
     //OR LETS JUST DEFINE THE CATEGORIES MANUALLY SINCE THE IS ORDER OF TEMPLATES MAY CHANGE
-    const categories = ["all", "health", "e-commerce", "education"]
+    const categories = ["All", "Health", "E-commerce", "Education"]
     const order = ["default", "ascending", "descending"]
 
     return (

@@ -1,6 +1,11 @@
-import * as ACTION from '../constants'
+import * as ACTION from '../constants/pagination'
 
-const paginationReducer = (state = { currentPage: 1, itemsPerPage: 9}, action) => {
+const initialState = {
+    currentPage: 1,
+    itemsPerPage: 15
+}
+
+const paginationReducer = (state = initialState, action) => {
     switch (action.type) {
         case ACTION.NEXT_PAGE:
             return {

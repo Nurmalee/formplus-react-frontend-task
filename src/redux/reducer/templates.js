@@ -1,6 +1,12 @@
-import * as ACTION from '../constants'
+import * as ACTION from '../constants/templates'
+
+const initialState = {
+    templates: [],
+    activeTemplates: [],
+    filterBy: ''
+}
   
-const templateReducer = (state = {templates:[], activeTemplates: [], searchTerm: ''}, action) => {
+const templateReducer = (state = initialState, action) => {
     switch (action.type) {
         case ACTION.FETCH_TEMPLATES_LOADING:
             return {
@@ -24,25 +30,24 @@ const templateReducer = (state = {templates:[], activeTemplates: [], searchTerm:
             }
 
         case ACTION.FILTER_TEMPLATES:
-            let searchedTemplates = state.templates.filter(template => template.category.includes(action.payload));
+            let selectedTemplates = state.templates.filter(template => template.category.includes(action.payload));
 
             if(!action.payload || action.payload === 'All'){
                 return {
                     ...state,
                     activeTemplates: state.templates,
-                    searchTerm: 'all'
+                    filterBy: 'all'
                 }
             }
 
             if(action.payload){
                 return {
                     ...state,
-                    activeTemplates: searchedTemplates,
-                    searchTerm: action.payload
+                    activeTemplates: selectedTemplates,
+                    filterBy: action.payload
                 }
             }
-
-            break;
+            return state;
     
         default:
             return state;
@@ -51,3 +56,12 @@ const templateReducer = (state = {templates:[], activeTemplates: [], searchTerm:
 }
 
 export default templateReducer
+
+
+   // let searchedTemplates = state.templates.filter(template => {
+            //     if (template.category.filter(cat => cat.toLowerCase().includes(action.payload))){
+            //         return template
+            //     } else {
+            //         return null
+            //     }
+            // });

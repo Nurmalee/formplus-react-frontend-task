@@ -1,5 +1,5 @@
 import axios from 'axios'
-import * as ACTION from '../constants'
+import * as ACTION from '../constants/templates'
 
 const URL = 'https://front-end-task-dot-fpls-dev.uc.r.appspot.com/api/v1/public/task_templates'
 
@@ -14,6 +14,6 @@ export const fetchTemplates = () => async (dispatch) => {
     }
 }
 
-export const searchTemplates = (searchValue) => async(dispatch) => {
-    dispatch({type: ACTION.FILTER_TEMPLATES, payload: searchValue})
+export const searchTemplates = (filterBy) => {
+    return({type: ACTION.FILTER_TEMPLATES, payload: filterBy})
 }
