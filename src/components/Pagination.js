@@ -46,6 +46,22 @@ const Pagination = () => {
         }
     };
 
+    const renderPageNumbers = pages.map(pageNumber => {
+        if (pageNumber > minPageNumberLimit && pageNumber < maxPageNumberLimit + 1) {
+        return (
+            <li
+                key={pageNumber}
+                id={pageNumber}
+                onClick={handlePageNumberClick}
+                className={currentPage === pageNumber ? "active" : null}
+            >
+                {pageNumber}
+            </li>
+        )} else {
+            return null
+        }
+    })
+
     //BRIEF STYLING FOR UNSTYLED PAGE NUMBERS AND PAGE ITEMS
     const unStyledPageListItem = {
         border: "none",
@@ -76,27 +92,8 @@ const Pagination = () => {
             
             <WideScreenPagination>
                 {pageDecrementBtn}
-
-                {
-                    pages.map(pageNumber => {
-                        if ((pageNumber < maxPageNumberLimit + 1) && (pageNumber > minPageNumberLimit)) {
-                        return (
-                            <li
-                                key={pageNumber}
-                                id={pageNumber}
-                                onClick={handlePageNumberClick}
-                                className={currentPage == pageNumber ? "active" : null}
-                            >
-                                {pageNumber}
-                            </li>
-                        )} else {
-                            return null
-                        }
-                    })
-                }
-
-                {/* {pageIncrementBtn} */}
-                
+                {renderPageNumbers}
+                {/* {pageIncrementBtn} */}             
                 <li style={unStyledPageListItem}>of</li>
                 <li style={unStyledPageListItem}>{pages.length}</li>
             </WideScreenPagination>

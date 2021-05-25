@@ -31,43 +31,23 @@ const templateReducer = (state = initialState, action) => {
             }
 
         case ACTION.FILTER_TEMPLATES:
-            let selectedTemplates = state.templates?.filter(template => template.category.includes(action.payload));
+            let selectedTemplates = state.templates?.filter(template => action.payload && action.payload === "All" ? template : template.category.includes(action.payload));
 
-            if(!action.payload || action.payload === 'All'){
-                return {
-                    ...state,
-                    activeTemplates: state.templates,
-                    filterBy: 'all'
-                }
+            return {
+                ...state,
+                activeTemplates: selectedTemplates,
+                filterBy: action.payload
             }
-
-            if(action.payload){
-                return {
-                    ...state,
-                    activeTemplates: selectedTemplates,
-                    filterBy: action.payload
-                }
-            }
-
-            return state;
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
             let searchedTemplates = state.templates?.filter(template => template.name.toLowerCase().includes(action.payload));
 
-            // if(!action.payload){
-            //     return {
-            //         ...state,
-            //         activeTemplates: state.templates,
-            //     }
-            // }
-
-            if(action.payload){
-                return {
-                    ...state,
-                    activeTemplates: searchedTemplates,
-                }
+            return {
+                ...state,
+                activeTemplates: searchedTemplates,
             }
-
+        
+        case ACTION.SORT_TEMPLATES_BY_NAME_ORDER:
             return state;
 
         default:
@@ -77,12 +57,3 @@ const templateReducer = (state = initialState, action) => {
 }
 
 export default templateReducer
-
-
-   // let searchedTemplates = state.templates.filter(template => {
-            //     if (template.category.filter(cat => cat.toLowerCase().includes(action.payload))){
-            //         return template
-            //     } else {
-            //         return null
-            //     }
-            // });

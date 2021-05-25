@@ -1,4 +1,3 @@
-// import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchedTemplates } from '../redux/actionsCreators/templates'
 
@@ -12,10 +11,8 @@ const Header = () => {
     const dispatch = useDispatch()
 
     const {templates} = useSelector(state => state.templates)
-    // const [input, setInput] = useState('')
 
     const handleInput = (e) => {
-        // setInput(e.target.value)
         dispatch(searchedTemplates(e.target.value.toLowerCase()))
     }
 
