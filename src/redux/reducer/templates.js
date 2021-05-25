@@ -3,7 +3,7 @@ import * as ACTION from '../constants/templates'
 const initialState = {
     templates: [],
     activeTemplates: [],
-    filterBy: ''
+    filterBy: 'All'
 }
   
 const templateReducer = (state = initialState, action) => {
@@ -13,7 +13,6 @@ const templateReducer = (state = initialState, action) => {
                 ...state,
                 loading: true,
                 templates: [],
-                filterBy: ''
             }
 
         case ACTION.FETCH_TEMPLATES_SUCCESS:
@@ -40,7 +39,7 @@ const templateReducer = (state = initialState, action) => {
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
-            let searchedTemplates = state.templates?.filter(template => template.name.toLowerCase().includes(action.payload));
+            let searchedTemplates = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template.name.toLowerCase().includes(action.payload) : null );
 
             return {
                 ...state,
