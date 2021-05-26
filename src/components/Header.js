@@ -52,7 +52,7 @@ const HeaderContainer = styled.div`
     background-color: white;
     z-index: 100;
 
-    @media screen and (min-width: 600px){
+    @media screen and (min-width: 500px){
         position: sticky;
         top: 0;
         left: 0;

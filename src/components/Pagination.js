@@ -88,8 +88,7 @@ const Pagination = () => {
             
             <WideScreenPagination>
                 {pageDecrementBtn}
-                {renderPageNumbers}
-                {/* {pageIncrementBtn} */}             
+                {renderPageNumbers}            
                 <li style={unStyledPageListItem}>of</li>
                 <li style={unStyledPageListItem}>{pages.length}</li>
             </WideScreenPagination>
