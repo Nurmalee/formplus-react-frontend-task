@@ -68,11 +68,6 @@ const Pagination = () => {
         padding: "3px 5px"
     }
 
-    // let pageIncrementBtn = null;
-    // if (pages.length > maxPageNumberLimit) {
-    //     pageIncrementBtn = <li onClick={handleNextbtn} style={unStyledPageListItem}> &hellip;&hellip; </li>;
-    // }
-
     let pageDecrementBtn = null;
     if (minPageNumberLimit >= 1) {
         pageDecrementBtn = <li onClick={handlePrevbtn} style={unStyledPageListItem}> &hellip; </li>;
@@ -85,6 +80,7 @@ const Pagination = () => {
 
     return (
         <PaginationContainer>
+
             <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
                 <ChevronLeftIcon style={{height: "18px"}} /> 
                 previous

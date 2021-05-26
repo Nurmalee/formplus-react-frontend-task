@@ -22,3 +22,11 @@ export const filterTemplates = (filterBy) => {
 export const searchedTemplates = (templateName) => {
     return({type: ACTION.SEARCH_TEMPLATES_BY_NAME, payload: templateName})
 }
+
+export const orderByName = (orderType) => {
+    return({type: ACTION.SORT_TEMPLATES_BY_NAME_ORDER, payload: orderType})
+}
+
+export const orderByDate = (orderType) => {
+    return({type: ACTION.SORT_TEMPLATES_BY_DATE_ORDER, payload: orderType})
+}

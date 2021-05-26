@@ -1,17 +1,30 @@
 import styled from 'styled-components'
-import {useDispatch} from 'react-redux'
-import {filterTemplates} from '../redux/actionsCreators/templates'
+import {useDispatch, useSelector} from 'react-redux'
+
+import {filterTemplates, orderByName, orderByDate} from '../redux/actionsCreators/templates'
 
 const DropDown = ({legend, options}) => {
 
     const dispatch = useDispatch()
 
+    const {loading, error} = useSelector(state => state.templates)
+
     const handleSelect = (e) => {
-        dispatch(filterTemplates(e.target.value))
+        let selectedOption = e.target.value
+        if(legend === 'categories'){
+            dispatch(filterTemplates(selectedOption))
+        }
+        if(legend === 'order'){
+            dispatch(orderByName(selectedOption))
+        }
+        if(legend === 'date'){
+            dispatch(orderByDate(selectedOption))
+        }
+       
     }
 
     return (
-        <DropDownFieldSet>
+        <DropDownFieldSet disabled={loading || error}>
             <legend>{legend}</legend>
             <select onChange={handleSelect}>
                 {

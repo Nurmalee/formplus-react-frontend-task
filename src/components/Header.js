@@ -10,20 +10,11 @@ const Header = () => {
 
     const dispatch = useDispatch()
 
-    const {templates} = useSelector(state => state.templates)
+    const { templates, loading, error } = useSelector(state => state.templates)
 
     const handleInput = (e) => {
         dispatch(searchedTemplates(e.target.value.toLowerCase()))
     }
-
-    // const categories = [...new Set(templates?.map(template => template.category))]
-    // const categoriesUno = templates?.filter(template => template.category.includes("Health"))
-    // const categoriesTwo = templates?.filter(template => template.category.includes("Education"))
-    // const categoriesThree = templates?.filter(template => template.category.includes("E-commerce"))
-    // const categoriesRearray = templates?.filter(template => template.category.filter(cat => cat.includes("Health")))
-    // const uniquecategories = ["All", ...categories[0]]
-    // console.log(categories[0], uniquecategories);
-    // console.log(categoriesUno, categoriesTwo, categoriesThree,  categoriesRearray);
 
     const autoCategories = templates?.map(template => ["All", ...template.category].toString())
     //  console.log([...new Set(autoCategories)]);
@@ -36,17 +27,19 @@ const Header = () => {
         <HeaderContainer>
 
             <HeaderMain>
+                
                 <HeaderSearch>
-                    <input type="text" placeholder="Search Templates" onChange={handleInput} />
+                    <input type="text" placeholder="Search Templates" onChange={handleInput} disabled={loading || error} />
                     <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
                 </HeaderSearch>
-
+                
                 <HeaderDropDownContainer>
                     <p>sort by: </p>
                     <DropDown legend="categories" options={categories} />
                     <DropDown legend="order" options={order} />
                     <DropDown legend="date" options={order} />
                 </HeaderDropDownContainer>
+
             </HeaderMain>
 
         </HeaderContainer>

@@ -39,6 +39,7 @@ const templateReducer = (state = initialState, action) => {
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
+            //to return searched templates based on the category being filtered
             let searchedTemplates = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template.name.toLowerCase().includes(action.payload) : null );
 
             return {
@@ -47,7 +48,62 @@ const templateReducer = (state = initialState, action) => {
             }
         
         case ACTION.SORT_TEMPLATES_BY_NAME_ORDER:
-            return state;
+            function dynamicsort(property,order) {
+                return function (a, b){
+                    // a should come before b in the sorted order
+                    if(order === "ascending" && (a[property] < b[property])){
+                        return -1;
+                    } 
+                    else if (order === "ascending" && (a[property] > b[property])){
+                        return 1;
+                    }
+                    // a should come after b in the sorted order
+                    else if(order === "descending" && (a[property] > b[property])){
+                        return -1;
+                    } 
+                    else if (order === "descending" && (a[property] < b[property])){
+                        return 1;
+                    }
+                    // a and b are the same
+                    else {
+                        return 0;
+                    }
+                }
+            }
+
+            return {
+                ...state,
+                activeTemplates: state.activeTemplates.sort(dynamicsort("name", action.payload.toLowerCase())),
+            };
+
+        case ACTION.SORT_TEMPLATES_BY_DATE_ORDER:
+            function dynamicSort(property,order) {
+                return function (a, b){
+                    // a should come before b in the sorted order
+                    if(order === "ascending" && (a[property] < b[property])){
+                        return -1;
+                    } 
+                    else if (order === "ascending" && (a[property] > b[property])){
+                        return 1;
+                    }
+                    // a should come after b in the sorted order
+                    else if(order === "descending" && (a[property] > b[property])){
+                        return -1;
+                    } 
+                    else if (order === "descending" && (a[property] < b[property])){
+                        return 1;
+                    }
+                    // a and b are the same
+                    else {
+                        return 0;
+                    }
+                }
+            }
+
+            return {
+                ...state,
+                activeTemplates: state.activeTemplates.sort(dynamicSort("created", action.payload.toLowerCase())),
+            };
 
         default:
             return state;

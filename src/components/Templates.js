@@ -52,7 +52,7 @@ const Templates = () => {
                             )
                         })
                     }
-                </TemplatesGrid>  
+                </TemplatesGrid>
             }
         </>
     )
