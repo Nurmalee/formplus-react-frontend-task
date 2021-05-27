@@ -4,9 +4,10 @@ import {fetchTemplates} from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
 import SingleTemplate from './SingleTemplate'
-import loadingImg from '../resources/images/loading.gif'
+import '../dynamicStyle.css'
+// import loadingImg from '../resources/images/loading.gif'
 
-import {ExclamationCircleIcon} from '@heroicons/react/outline'
+import {ExclamationCircleIcon, RefreshIcon} from '@heroicons/react/outline'
 
 const Templates = () => {
 
@@ -38,22 +39,26 @@ const Templates = () => {
             {
                 loading ? 
                     <LoadingImage>
-                        <img src={loadingImg} alt="loading"/> <p>loading templates...</p> 
+                        {/* <img src={loadingImg} alt="loading"/> <p>loading templates...</p> */}
+                        <RefreshIcon className="loading" /> 
+                        <p>loading templates...</p>
                     </LoadingImage> : 
                 error ? 
                     <ErrorNote>
-                        <ExclamationCircleIcon style={{height: "100px", color: "#777"}} /> <p>{error}</p> 
+                        <ExclamationCircleIcon style={{height: "100px", color: "#777"}} />
+                        <p>{error}</p> 
                     </ErrorNote> :
           
                 <TemplatesGrid>
-                    { 
-                       currentTemplates.map((template, index) => {
-                            return (
-                                <SingleTemplate key={index} {...template} />
-                            )
-                        })
-                    }
-                </TemplatesGrid>
+                    {currentTemplates.map((template, index) => <SingleTemplate key={index} {...template} />)}     
+                </TemplatesGrid>    
+            }
+
+            {(!loading && activeTemplates?.length === 0) && 
+                <NoSearchMatchesFound>
+                    <ExclamationCircleIcon style={{height: "100px", color: "#777"}} />
+                    <p>no matches found for your search</p>
+                </NoSearchMatchesFound>
             }
         </>
     )
@@ -105,4 +110,8 @@ const TemplatesGrid = styled.section`
     @media screen and (min-width: 900px) {
         grid-template-columns: repeat(3, 1fr);
     }
+`
+
+const NoSearchMatchesFound = styled.div`
+    text-align: center;
 `
