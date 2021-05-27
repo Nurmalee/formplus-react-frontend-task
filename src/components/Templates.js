@@ -30,7 +30,7 @@ const Templates = () => {
                 <TemplateCategory> {!filterBy ? 'all templates' : `${filterBy} templates`}</TemplateCategory>
                 
                 <TemplateCount>
-                    {loading ? '' : error ? 'No' : activeTemplates?.length}
+                    {loading ? '' : error || activeTemplates?.length < 1 ? 'No' : activeTemplates?.length}
                     {loading ? 'Loading templates' : activeTemplates?.length <= 1 ? ' template' : ' templates' }
                 </TemplateCount>
 

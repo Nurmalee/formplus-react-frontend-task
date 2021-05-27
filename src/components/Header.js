@@ -10,7 +10,7 @@ const Header = () => {
 
     const dispatch = useDispatch()
 
-    const { templates, loading, error } = useSelector(state => state.templates)
+    const { templates, loading, error, searchInput } = useSelector(state => state.templates)
 
     const handleInput = (e) => {
         dispatch(searchedTemplates(e.target.value.toLowerCase()))
@@ -28,7 +28,7 @@ const Header = () => {
             <HeaderMain>
                 
                 <HeaderSearch>
-                    <input type="text" placeholder="Search Templates" onChange={handleInput} disabled={loading || error} />
+                    <input type="text" placeholder="Search Templates" onChange={handleInput} value={searchInput} disabled={loading || error} />
                     <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
                 </HeaderSearch>
                 
