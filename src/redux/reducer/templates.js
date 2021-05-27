@@ -61,6 +61,7 @@ const templateReducer = (state = initialState, action) => {
                 ...state,
                 activeTemplates: filteredTemplates,
                 filterBy: action.payload,
+                //returns current input payload stored and used as value at input field to null 
                 searchInput: ""
             }
         

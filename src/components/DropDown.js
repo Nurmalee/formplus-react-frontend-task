@@ -27,9 +27,7 @@ const DropDown = ({legend, options}) => {
         <DropDownFieldSet disabled={loading || error}>
             <legend>{legend}</legend>
             <select onChange={handleSelect}>
-                {
-                   options?.map((link, index) => <option key={index} value={link}>{link}</option>) 
-                }
+                {options?.map((link, index) => <option key={index} value={link}>{link}</option>)}
             </select>            
         </DropDownFieldSet>
     )

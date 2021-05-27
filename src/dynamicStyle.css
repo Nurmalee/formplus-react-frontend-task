@@ -4,15 +4,25 @@
 }
 
 .loading {
-    animation-name: rotate;
-    animation-duration: 4s;
-    animation-iteration-count: infinite;
+    animation: 0.5s linear infinite rotate;
     height: 100px; 
     color: #777;
 }
 
-@keyframes rotate {
+@-webkit-keyframes rotate {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
     100% {
-        transform: rotate(7200deg);
+      -webkit-transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
     }
 }

@@ -57,7 +57,7 @@ const Templates = () => {
             {(!loading && activeTemplates?.length === 0) && 
                 <NoSearchMatchesFound>
                     <ExclamationCircleIcon style={{height: "100px", color: "#777"}} />
-                    <p>no matches found for your search</p>
+                    <p>No matches found for your search</p>
                 </NoSearchMatchesFound>
             }
         </>
