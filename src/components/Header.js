@@ -16,11 +16,10 @@ const Header = () => {
         dispatch(searchedTemplates(e.target.value.toLowerCase()))
     }
 
-    const autoCategories = templates?.map(template => ["All", ...template.category].toString())
-    //  console.log([...new Set(autoCategories)]);
+    //Dynamically pulling categories from available templates
+    const categories = templates?.map(template => ['All', ...template.category]).join(',').split(',')
+    const uniqueCategories = [...new Set (categories)]
 
-    //OR LETS JUST DEFINE THE CATEGORIES MANUALLY SINCE THE ORDER OF TEMPLATES MAY CHANGE
-    const categories = ["All", "Health", "E-commerce", "Education"]
     const order = ["default", "ascending", "descending"]
 
     return (
@@ -35,7 +34,7 @@ const Header = () => {
                 
                 <HeaderDropDownContainer>
                     <p>sort by: </p>
-                    <DropDown legend="categories" options={categories} />
+                    <DropDown legend="categories" options={uniqueCategories} />
                     <DropDown legend="order" options={order} />
                     <DropDown legend="date" options={order} />
                 </HeaderDropDownContainer>

@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import {ChevronRightIcon, ChevronLeftIcon} from '@heroicons/react/outline'
 
 import styled from 'styled-components'
-import {nextPage, previousPage, pageNumberClick} from '../redux/actionsCreators/pagination'
+import {nextPage, previousPage } from '../redux/actionsCreators/pagination'
+// import {pageNumberClick} from '../redux/actionsCreators/pagination'
 import '../dynamicStyle.css'
 
 const Pagination = () => {
@@ -24,9 +25,9 @@ const Pagination = () => {
         pages.push(i);
     }
 
-    const handlePageNumberClick = (e) => {
-        dispatch(pageNumberClick(Number(e.target.id)))
-    };
+    // const handlePageNumberClick = (e) => {
+    //     dispatch(pageNumberClick(Number(e.target.id)))
+    // };
 
     const handleNextbtn = () => {
         dispatch(nextPage())
@@ -46,21 +47,21 @@ const Pagination = () => {
         }
     };
 
-    const renderPageNumbers = pages.map(pageNumber => {
-        if (pageNumber > minPageNumberLimit && pageNumber < maxPageNumberLimit + 1) {
-        return (
-            <li
-                key={pageNumber}
-                id={pageNumber}
-                onClick={handlePageNumberClick}
-                className={currentPage === pageNumber ? "active" : null}
-            >
-                {pageNumber}
-            </li>
-        )} else {
-            return null
-        }
-    })
+    // const renderPageNumbers = pages.map(pageNumber => {
+    //     if (pageNumber > minPageNumberLimit && pageNumber < maxPageNumberLimit + 1) {
+    //     return (
+    //         <li
+    //             key={pageNumber}
+    //             id={pageNumber}
+    //             onClick={handlePageNumberClick}
+    //             className={currentPage === pageNumber ? "active" : null}
+    //         >
+    //             {pageNumber}
+    //         </li>
+    //     )} else {
+    //         return null
+    //     }
+    // })
 
     //BRIEF STYLING FOR UNSTYLED PAGE NUMBERS AND PAGE ITEMS
     const unStyledPageListItem = {
@@ -68,10 +69,10 @@ const Pagination = () => {
         padding: "3px 5px"
     }
 
-    let pageDecrementBtn = null;
-    if (minPageNumberLimit >= 1) {
-        pageDecrementBtn = <li onClick={handlePrevbtn} style={unStyledPageListItem}> &hellip; </li>;
-    }
+    // let pageDecrementBtn = null;
+    // if (minPageNumberLimit >= 1) {
+    //     pageDecrementBtn = <li onClick={handlePrevbtn} style={unStyledPageListItem}> &hellip; </li>;
+    // }
 
     //CONDITIONALLY RENDER PAGINATION CONTANER
     if(loading || error) {
@@ -86,12 +87,12 @@ const Pagination = () => {
                 previous
             </button>
             
-            <WideScreenPagination>
+            {/* <WideScreenPagination>
                 {pageDecrementBtn}
                 {renderPageNumbers}            
                 <li style={unStyledPageListItem}>of</li>
                 <li style={unStyledPageListItem}>{pages.length}</li>
-            </WideScreenPagination>
+            </WideScreenPagination> */}
 
             <MobileScreenPagination>
                 <li>{currentPage}</li>
@@ -156,24 +157,24 @@ const PaginationContainer = styled.div`
 
 `
 
-const WideScreenPagination = styled.ul`
-    display: none;
-    list-style: none;
-    flex-wrap: wrap;
+// const WideScreenPagination = styled.ul`
+//     display: none;
+//     list-style: none;
+//     flex-wrap: wrap;
 
-    @media screen and (min-width: 900px){
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`
+//     @media screen and (min-width: 900px){
+//         display: flex;
+//         align-items: center;
+//         justify-content: center;
+//     }
+// `
 
 const MobileScreenPagination = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
 
-    @media screen and (min-width: 900px){
+    /* @media screen and (min-width: 900px){
         display: none;
-    }
+    } */
 `

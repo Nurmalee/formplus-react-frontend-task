@@ -4,6 +4,7 @@ import {fetchTemplates} from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
 import SingleTemplate from './SingleTemplate'
+import loadingImg from '../resources/images/loading.gif'
 
 import {ExclamationCircleIcon} from '@heroicons/react/outline'
 
@@ -37,7 +38,7 @@ const Templates = () => {
             {
                 loading ? 
                     <LoadingImage>
-                        <img src="https://media.giphy.com/media/feN0YJbVs0fwA/giphy.gif" alt="loading"/> <p>loading templates...</p> 
+                        <img src={loadingImg} alt="loading"/> <p>loading templates...</p> 
                     </LoadingImage> : 
                 error ? 
                     <ErrorNote>
