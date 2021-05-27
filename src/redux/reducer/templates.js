@@ -54,6 +54,7 @@ const templateReducer = (state = initialState, action) => {
             }
 
         case ACTION.FILTER_TEMPLATES:
+            //TO RETURN FILTERED TEMPLATES BASED ON CATEGORY CLICKED
             let filteredTemplates = state.templates?.filter(template => action.payload === "All" ? template : template.category.includes(action.payload));
 
             return {
@@ -63,7 +64,7 @@ const templateReducer = (state = initialState, action) => {
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
-            //to return searched templates based on the category being filtered
+            //TO RETURN SEARCHED TEMPLATES BASED ON CATEGORY BEING FILTERED TO
             let searchedTemplates = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template.name.toLowerCase().includes(action.payload) : null );
 
             return {
@@ -72,8 +73,7 @@ const templateReducer = (state = initialState, action) => {
             }
         
         case ACTION.SORT_TEMPLATES_BY_NAME_ORDER:
-            // let sortedTemplates = action.payload.toLowerCase() === "default" ? state.activeTemplatesStored : state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
-
+            //TO RETURN ORDERED TEMPLATES BY NAME BASED ON CATEGORY BEING FILTERED TO
             let sortedTemplatesByName = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
 
             sortedTemplatesByName = sortedTemplatesByName.sort(sortDynamically("name", action.payload.toLowerCase()))
@@ -84,7 +84,7 @@ const templateReducer = (state = initialState, action) => {
             };
 
         case ACTION.SORT_TEMPLATES_BY_DATE_ORDER:
-
+            //TO RETURN ORDERED TEMPLATES BY DATE BASED ON CATEGORY BEING FILTERED TO
             let sortedTemplatesByDate = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
             
             sortedTemplatesByDate = sortedTemplatesByDate.sort(sortDynamically("created", action.payload.toLowerCase()))
