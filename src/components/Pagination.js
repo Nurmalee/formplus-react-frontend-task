@@ -53,8 +53,8 @@ const Pagination = () => {
         padding: "3px 5px"
     }
 
-    //CONDITIONALLY RENDER PAGINATION CONTANER
-    if(loading || error) {
+    //CONDITIONALLY RENDER PAGINATION CONTAINER
+    if(loading || error || activeTemplates?.length === 0) {
         return null
     }
 
