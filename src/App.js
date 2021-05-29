@@ -28,7 +28,7 @@ const themes = {
 
 const App = () => {
 
-  const [currentTheme, setCurrentTheme] = useState("dark")
+  const [currentTheme, setCurrentTheme] = useState("light")
 
   return (
     <ThemeProvider theme={themes[currentTheme]}>
