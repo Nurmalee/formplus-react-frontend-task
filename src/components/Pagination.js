@@ -8,6 +8,7 @@ import styled from 'styled-components'
 import {nextPage, previousPage } from '../redux/actionsCreators/pagination'
 import {pageNumberClick} from '../redux/actionsCreators/pagination'
 import '../dynamicStyle.css'
+import {styles} from '../styles'
 
 const Pagination = () => {
 
@@ -88,6 +89,8 @@ const Pagination = () => {
 export default Pagination
 
 const PaginationContainer = styled.div`
+    width: ${styles.containerWidth};
+    margin: 0 auto;
     margin-top: 100px;
     display: flex;
     align-items: center;
@@ -98,8 +101,9 @@ const PaginationContainer = styled.div`
         flex-wrap: wrap;
 
         > li {
-            border: 1px solid #C4C4C4;
+            border: 1px solid ${props => props.theme.borderColor};
             border-radius: 3px;
+            color: ${props => props.theme.textColor};
             padding: 3px 10px;
             cursor: pointer;
             margin-right: 3px;
@@ -115,9 +119,14 @@ const PaginationContainer = styled.div`
         padding: 12px;
         border: none;
         background-color: transparent;
+        color: ${props => props.theme.textColor};
         font-size: 11px;
         cursor: pointer;
         text-transform: capitalize;
+
+        &:disabled {
+            color: #ddd;
+        }
 
         @media screen and (min-width: 700px){
             font-size: 13px;

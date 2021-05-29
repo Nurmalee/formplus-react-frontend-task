@@ -3,11 +3,13 @@ import {useSelector, useDispatch} from 'react-redux'
 import {fetchTemplates} from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
+import {styles} from '../styles'
+
 import SingleTemplate from './SingleTemplate'
 import '../dynamicStyle.css'
 // import loadingImg from '../resources/images/loading.gif'
 
-import {ExclamationCircleIcon, RefreshIcon} from '@heroicons/react/outline'
+import {ExclamationCircleIcon, QuestionMarkCircleIcon, CubeTransparentIcon} from '@heroicons/react/outline'
 
 const Templates = () => {
 
@@ -40,12 +42,12 @@ const Templates = () => {
                 loading ? 
                     <LoadingImage>
                         {/* <img src={loadingImg} alt="loading"/> <p>loading templates...</p> */}
-                        <RefreshIcon className="loading" /> 
+                        <CubeTransparentIcon className="loading" /> 
                         <p>loading templates...</p>
                     </LoadingImage> : 
                 error ? 
                     <ErrorNote>
-                        <ExclamationCircleIcon style={{height: "100px", color: "#777"}} />
+                        <ExclamationCircleIcon style={styles.commonIconStyle} />
                         <p>{error}</p> 
                     </ErrorNote> :
           
@@ -56,7 +58,7 @@ const Templates = () => {
 
             {(!loading && activeTemplates?.length === 0) && 
                 <NoSearchMatchesFound>
-                    <ExclamationCircleIcon style={{height: "100px", color: "#777"}} />
+                    <QuestionMarkCircleIcon style={styles.commonIconStyle} />
                     <p>No matches found for your search</p>
                 </NoSearchMatchesFound>
             }
@@ -68,10 +70,13 @@ export default Templates
 
 const TemplatesHeader = styled.div`
     padding-bottom: 20px;
+    width: ${styles.containerWidth};
+    margin: 0 auto;
     display: flex;
     align-items: center;
     text-transform: capitalize;
     justify-content: space-between;
+    color: ${props => props.theme.textColor};
 `
 
 const TemplateCategory = styled.p`
@@ -90,6 +95,10 @@ const LoadingImage = styled.div`
     text-align: center;
     margin: 40px 0 20px 0;
 
+    > p {
+        color: ${props => props.theme.textColor};
+    }
+
     > img {
         height: 230px;
         object-fit: contain;
@@ -99,9 +108,15 @@ const LoadingImage = styled.div`
 const ErrorNote = styled.div`
     text-align: center;
     margin: 40px 0 20px 0;
+
+    > p {
+        color: ${props => props.theme.textColor};
+    }
 `
 
 const TemplatesGrid = styled.section`
+    width: 90vw;
+    margin: 0 auto;
     display: grid;
     gap: 40px;
 
@@ -117,4 +132,8 @@ const TemplatesGrid = styled.section`
 const NoSearchMatchesFound = styled.div`
     text-align: center;
     margin: 40px 0 20px 0;
+
+    > p {
+        color: ${props => props.theme.textColor};
+    }
 `

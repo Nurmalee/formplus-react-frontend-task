@@ -60,9 +60,7 @@ const templateReducer = (state = initialState, action) => {
             return {
                 ...state,
                 activeTemplates: filteredTemplates,
-                filterBy: action.payload,
-                //returns current input payload stored and used as value at input field to null 
-                searchInput: ""
+                filterBy: action.payload
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
@@ -71,9 +69,7 @@ const templateReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                activeTemplates: searchedTemplates,
-                //below stores current input payload and returns it as value to input field 
-                searchInput: action.payload
+                activeTemplates: searchedTemplates
             }
         
         case ACTION.SORT_TEMPLATES_BY_NAME_ORDER:

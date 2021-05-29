@@ -13,12 +13,12 @@ const SingleTemplate = ({description, link, name}) => {
 export default SingleTemplate
 
 const TemplateBox = styled.div`
-    box-shadow: 7px 7px 10px rgb(250, 250, 250);
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 4px 20px ${props => props.theme.boxShadow};
     border-radius: 4px;
-    border: 1px solid #ddd;
+    border: 1px solid ${props => props.theme.borderColor};
     transition: 500ms;
     align-self: flex-start;
+    color: ${props => props.theme.textColor};
 
     &:hover {
         border: 1px solid limegreen;

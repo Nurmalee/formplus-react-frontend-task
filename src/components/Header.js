@@ -1,18 +1,28 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchedTemplates } from '../redux/actionsCreators/templates'
 
 import styled from 'styled-components'
+import {styles} from '../styles'
 
 import { SearchIcon } from '@heroicons/react/outline'
 import DropDown from './DropDown'
 
-const Header = () => {
+
+const Header = ({theme, setCurrentTheme}) => {
+
+    const [input, setInput] = useState('')
+
+    const toggleTheme = () => {
+        theme === 'light' ?  setCurrentTheme('dark') : setCurrentTheme('light')
+    }
 
     const dispatch = useDispatch()
 
-    const { templates, loading, error, searchInput } = useSelector(state => state.templates)
+    const { templates, loading, error } = useSelector(state => state.templates)
 
     const handleInput = (e) => {
+        setInput(e.target.value)
         dispatch(searchedTemplates(e.target.value.toLowerCase()))
     }
 
@@ -28,15 +38,15 @@ const Header = () => {
             <HeaderMain>
                 
                 <HeaderSearch>
-                    <input type="text" placeholder="Search Templates" onChange={handleInput} value={searchInput} disabled={loading || error} />
-                    <SearchIcon style={{height: "20px", padding: "0 10px", color: "#C4C4C4"}} />
+                    <input type="text" placeholder="Search Templates" onChange={handleInput} value={input} disabled={loading || error} />
+                    <SearchIcon style={styles.searchIcon} onClick={toggleTheme} />
                 </HeaderSearch>
                 
                 <HeaderDropDownContainer>
                     <p>sort by: </p>
-                    <DropDown legend="categories" options={uniqueCategories} />
-                    <DropDown legend="order" options={order} />
-                    <DropDown legend="date" options={order} />
+                    <DropDown legend="categories" options={uniqueCategories} setInput={setInput} />
+                    <DropDown legend="order" options={order} setInput={setInput} />
+                    <DropDown legend="date" options={order} setInput={setInput} />
                 </HeaderDropDownContainer>
 
             </HeaderMain>
@@ -48,7 +58,7 @@ const Header = () => {
 export default Header
 
 const HeaderContainer = styled.div`
-    background-color: white;
+    background-color: ${props => props.theme.backgroundColor};
     z-index: 100;
 
     @media screen and (min-width: 500px){
@@ -59,9 +69,9 @@ const HeaderContainer = styled.div`
 `
 
 const HeaderMain = styled.div`
-    width: 90vw;
+    width: ${styles.containerWidth};
     margin: 0 auto;
-    padding: 20px 10px;
+    padding: 20px 0;
     padding-top: 40px;
 
     @media screen and (min-width: 850px) {
@@ -72,7 +82,8 @@ const HeaderMain = styled.div`
 `
 
 const HeaderSearch = styled.div`
-    border: 1px solid #C4C4C4;
+    /* border: 1px solid #C4C4C4; */
+    border: 1px solid ${props => props.theme.borderColor};
     border-radius: 2px;
     display: flex;
     align-items: center;
