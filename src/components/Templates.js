@@ -88,6 +88,7 @@ const TemplateCount = styled.p`
 
 const LoadingImage = styled.div`
     text-align: center;
+    margin: 40px 0 20px 0;
 
     > img {
         height: 230px;
@@ -97,6 +98,7 @@ const LoadingImage = styled.div`
 
 const ErrorNote = styled.div`
     text-align: center;
+    margin: 40px 0 20px 0;
 `
 
 const TemplatesGrid = styled.section`
@@ -114,4 +116,5 @@ const TemplatesGrid = styled.section`
 
 const NoSearchMatchesFound = styled.div`
     text-align: center;
+    margin: 40px 0 20px 0;
 `

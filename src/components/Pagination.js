@@ -59,6 +59,7 @@ const Pagination = () => {
     }
 
     return (
+        <>
         <PaginationContainer>
 
             <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
@@ -79,6 +80,8 @@ const Pagination = () => {
            
             
         </PaginationContainer>
+        {currentPage >= 40 && <BackToStart onClick={handlePageNumberClick} id={1}>back to page one </BackToStart>}
+        </>
     )
 }
 
@@ -100,7 +103,6 @@ const PaginationContainer = styled.div`
             padding: 3px 10px;
             cursor: pointer;
             margin-right: 3px;
-            margin-top: 10px;
             font-size: 12px;
             display: flex;
             align-items: center;
@@ -121,16 +123,21 @@ const PaginationContainer = styled.div`
             font-size: 13px;
             padding: 12px 20px;
         }
-
-        &:first-of-type {
-            margin-right: 8px;
-        }
     }
-
 `
 
 const ScreenPagination = styled.ul`
     display: flex;
     align-items: center;
     justify-content: center;
+`
+
+const BackToStart = styled.div`
+    cursor: pointer;
+    font-size: 11px;
+    margin-top: 40px;
+    text-align: center;
+    text-transform: capitalize;
+    padding-left: 17px;
+    color: limegreen;
 `
