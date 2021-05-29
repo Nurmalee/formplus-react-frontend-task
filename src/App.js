@@ -13,9 +13,9 @@ const lightTheme = {
 }
 
 const darkTheme = {
-  // backgroundColor: "#333",
+  backgroundColor: "#222",
   // backgroundColor: "rgba(0, 8, 0, 0.8)",
-  backgroundColor: "#3c3d36",
+  // backgroundColor: "#3c3d36",
   textColor: "#C4C4C4",
   borderColor: "#555",
   boxShadow: "rgba(0, 0, 0, 0.92)",
