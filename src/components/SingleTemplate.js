@@ -24,8 +24,8 @@ const TemplateBox = styled.div`
     cursor: pointer;
 
     &:hover {
-        border: 2px solid;
-        /* transform: scale(1.03); */
+        border: 2px solid ${props => props.theme.borderColor};
+        transform: scale(1.02);
     }
 
     > h2 {
