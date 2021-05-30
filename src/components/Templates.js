@@ -52,7 +52,7 @@ const Templates = () => {
                     </ErrorNote> :
           
                 <TemplatesGrid>
-                    {currentTemplates.map((template, index) => <SingleTemplate key={index} {...template} />)}     
+                    {currentTemplates.map((template, index) => <SingleTemplate key={index} {...template} />)} 
                 </TemplatesGrid>    
             }
 

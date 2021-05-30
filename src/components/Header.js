@@ -103,8 +103,8 @@ const HeaderSearch = styled.div`
         width: 100%;
 
         &:focus {
-            box-shadow: 0 0 10px #FFF4EA;
-            border: 1px solid #FFF4EA;
+            /* box-shadow: 0 0 10px #FFF4EA; */
+            border: 1px solid brown;
         }
     }
 `

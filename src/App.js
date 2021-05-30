@@ -6,19 +6,19 @@ import Templates from './components/Templates'
 import Pagination from './components/Pagination'
 
 const lightTheme = {
-  backgroundColor: "white",
-  textColor: "#545454",
+  backgroundColor: "rgb(254,254,254)",
+  // textColor: "#545454",
+  textColor: "#333",
   borderColor: "#CCC",
   boxShadow: "rgba(0, 0, 0, 0.08)",
 }
 
 const darkTheme = {
-  backgroundColor: "#222",
-  // backgroundColor: "rgba(0, 8, 0, 0.8)",
-  // backgroundColor: "#3c3d36",
-  textColor: "#C4C4C4",
+  backgroundColor: "#333",
+  // textColor: "#C4C4C4",
+  textColor: "rgb(213,213,213)",
   borderColor: "#555",
-  boxShadow: "rgba(0, 0, 0, 0.92)",
+  boxShadow: "rgba(0, 0, 0, 0.72)",
 }
 
 const themes = {

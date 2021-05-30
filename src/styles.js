@@ -2,7 +2,7 @@ export const styles = {
     containerWidth: "90vw",
 
     commonIconStyle: {
-        height: "100px", 
+        height: "80px", 
         color: "#777"
     },
 
@@ -16,6 +16,6 @@ export const styles = {
     searchIcon : {
         height: "20px",
         padding: "0 10px",
-        color: "#C4C4C4"
+        color: "#C4C4C4",
     },
 }
