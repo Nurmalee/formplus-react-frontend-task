@@ -7,9 +7,7 @@ import Pagination from './components/Pagination'
 
 const lightTheme = {
   backgroundColor: "rgb(254,254,254)",
-  // textColor: "#545454",
-  textColor: "#333",
-  borderColor: "#CCC",
+  textColor: "#555",
   boxShadow: "rgba(0, 0, 0, 0.08)",
 }
 

@@ -24,7 +24,7 @@ const TemplateBox = styled.div`
     cursor: pointer;
 
     &:hover {
-        border: 2px solid ${props => props.theme.textColor};;
+        border: 2px solid;
         /* transform: scale(1.03); */
     }
 
