@@ -3,9 +3,8 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchedTemplates } from '../redux/actionsCreators/templates'
 import { styles } from '../styles/styles'
-import { SearchIcon } from '@heroicons/react/outline'
+import { SearchIcon, FireIcon } from '@heroicons/react/outline'
 import DropDown from './DropDown'
-
 
 const Header = ({theme, setCurrentTheme}) => {
 
@@ -34,10 +33,9 @@ const Header = ({theme, setCurrentTheme}) => {
         <HeaderContainer>
 
             <HeaderMain>
-                
                 <HeaderSearch>
                     <input type="text" placeholder="Search Templates" onChange={handleInput} value={input} disabled={loading || error} />
-                    <SearchIcon style={styles.smallIcon} onClick={toggleTheme} />
+                    <SearchIcon style={styles.smallIcon} />
                 </HeaderSearch>
                 
                 <HeaderDropDownContainer>
@@ -46,6 +44,11 @@ const Header = ({theme, setCurrentTheme}) => {
                     <DropDown legend="order" options={order} setInput={setInput} />
                     <DropDown legend="date" options={order} setInput={setInput} />
                 </HeaderDropDownContainer>
+
+                <ThemeToggler onClick={toggleTheme}>
+                    <p>Switch Mode</p>
+                    <FireIcon style={styles.smallIcon} />
+                </ThemeToggler>
 
             </HeaderMain>
 
@@ -79,8 +82,30 @@ const HeaderMain = styled.div`
     }
 `
 
+const ThemeToggler = styled.div`
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background-color: #111;
+    z-index: 50;
+    color: whitesmoke;
+    cursor: pointer;
+    box-shadow: 0 0 15px #555;
+    border-radius: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    padding-left: 20px;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > p {
+        font-size: 11px;
+        font-weight: 600;
+    }
+`
+
 const HeaderSearch = styled.div`
-    /* border: 1px solid #C4C4C4; */
     border: 1px solid ${props => props.theme.borderColor};
     border-radius: 2px;
     display: flex;

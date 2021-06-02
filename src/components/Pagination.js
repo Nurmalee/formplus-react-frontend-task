@@ -145,5 +145,6 @@ const BackToStart = styled.div`
     text-align: center;
     text-transform: capitalize;
     padding-left: 17px;
-    color: limegreen;
+    color: #FFF4EA;
+    color: rgb(100, 245, 100);
 `
