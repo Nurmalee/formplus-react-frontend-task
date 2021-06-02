@@ -90,7 +90,8 @@ const ThemeToggler = styled.div`
     z-index: 50;
     color: whitesmoke;
     cursor: pointer;
-    box-shadow: 0 0 15px #555;
+    box-shadow: 0 0 10px #555;
+    border: 1px solid #777;
     border-radius: 5px;
     margin-left: 10px;
     padding: 5px 10px;
@@ -100,8 +101,8 @@ const ThemeToggler = styled.div`
     justify-content: center;
 
     > p {
-        font-size: 11px;
-        font-weight: 600;
+        font-size: 9px;
+        font-weight: 500;
     }
 `
 
