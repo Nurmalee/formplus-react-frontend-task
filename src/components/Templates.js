@@ -1,15 +1,11 @@
-import {useEffect} from 'react'
-import {useSelector, useDispatch} from 'react-redux'
-import {fetchTemplates} from '../redux/actionsCreators/templates'
-
 import styled from 'styled-components'
-import {styles} from '../styles'
-
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchTemplates } from '../redux/actionsCreators/templates'
+import { ExclamationCircleIcon, QuestionMarkCircleIcon, CubeTransparentIcon } from '@heroicons/react/outline'
+import { styles } from '../styles/styles'
+import '../styles/styles.css'
 import SingleTemplate from './SingleTemplate'
-import '../dynamicStyle.css'
-// import loadingImg from '../resources/images/loading.gif'
-
-import {ExclamationCircleIcon, QuestionMarkCircleIcon, CubeTransparentIcon} from '@heroicons/react/outline'
 
 const Templates = () => {
 
@@ -47,18 +43,18 @@ const Templates = () => {
                     </LoadingImage> : 
                 error ? 
                     <ErrorNote>
-                        <ExclamationCircleIcon style={styles.commonIconStyle} />
+                        <ExclamationCircleIcon style={styles.largeIcon} />
                         <p>{error}</p> 
                     </ErrorNote> :
           
-                <TemplatesGrid>
+                <TemplatesGrid data-test='templatesGrid'>
                     {currentTemplates.map((template, index) => <SingleTemplate key={index} {...template} />)} 
                 </TemplatesGrid>    
             }
 
             {(!loading && activeTemplates?.length === 0) && 
                 <NoSearchMatchesFound>
-                    <QuestionMarkCircleIcon style={styles.commonIconStyle} />
+                    <QuestionMarkCircleIcon style={styles.largeIcon} />
                     <p>No matches found for your search</p>
                 </NoSearchMatchesFound>
             }

@@ -1,7 +1,7 @@
 export const styles = {
     containerWidth: "90vw",
 
-    commonIconStyle: {
+    largeIcon: {
         height: "80px", 
         color: "#777"
     },
@@ -13,7 +13,7 @@ export const styles = {
         alignSelf: "start"
     },
 
-    searchIcon : {
+    smallIcon : {
         height: "20px",
         padding: "0 10px",
         color: "#C4C4C4",

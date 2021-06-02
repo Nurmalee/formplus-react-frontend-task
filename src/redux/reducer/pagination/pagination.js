@@ -1,4 +1,4 @@
-import * as ACTION from '../constants/pagination'
+import * as ACTION from '../../constants/pagination'
 
 const initialState = {
     currentPage: 1,

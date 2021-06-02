@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import {useDispatch, useSelector} from 'react-redux'
-
-import {filterTemplates, orderByName, orderByDate} from '../redux/actionsCreators/templates'
+import { useDispatch, useSelector } from 'react-redux'
+import { filterTemplates, orderByName, orderByDate } from '../redux/actionsCreators/templates'
 
 const DropDown = ({legend, options, setInput}) => {
 

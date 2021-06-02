@@ -1,4 +1,4 @@
-import * as ACTION from '../constants/templates'
+import * as ACTION from '../../constants/templates'
 
 const sortDynamically = (property,order) => {
     return function (a, b){

@@ -1,14 +1,11 @@
-import {useState} from 'react'
-
-import { useDispatch, useSelector } from 'react-redux'
-
-import {ChevronRightIcon, ChevronLeftIcon} from '@heroicons/react/outline'
-
 import styled from 'styled-components'
-import {nextPage, previousPage } from '../redux/actionsCreators/pagination'
-import {pageNumberClick} from '../redux/actionsCreators/pagination'
-import '../dynamicStyle.css'
-import {styles} from '../styles'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { nextPage, previousPage } from '../redux/actionsCreators/pagination'
+import { pageNumberClick } from '../redux/actionsCreators/pagination'
+import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
+import '../styles/styles.css'
+import { styles } from '../styles/styles'
 
 const Pagination = () => {
 

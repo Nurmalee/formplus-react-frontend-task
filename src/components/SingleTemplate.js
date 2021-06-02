@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 import { ArrowNarrowRightIcon } from '@heroicons/react/solid'
-import { styles } from '../styles'
+import { styles } from '../styles/styles'
 
 const SingleTemplate = ({description, link, name}) => {
     return (
         <TemplateBox>
             <h2>{name}</h2>
             <p>{description}. This description doesn't contain enough words for proper design rendering so I have decided to inclue this joker.. Hope you don't mind </p>
-            <a href={link}>use template <ArrowNarrowRightIcon style={styles.searchIcon} /> </a>
+            <a href={link}>use template <ArrowNarrowRightIcon style={styles.smallIcon} /> </a>
         </TemplateBox>
     )
 }
@@ -49,7 +49,7 @@ const TemplateBox = styled.div`
         padding: 10px 15px;
         text-transform: capitalize;
         text-decoration: none;
-        background-color: rgb(250, 250, 250);
+        background-color: rgb(248, 250, 248);
         display: flex;
         align-items: center;
         justify-content: space-between;

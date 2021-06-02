@@ -1,10 +1,8 @@
+import styled from 'styled-components'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { searchedTemplates } from '../redux/actionsCreators/templates'
-
-import styled from 'styled-components'
-import {styles} from '../styles'
-
+import { styles } from '../styles/styles'
 import { SearchIcon } from '@heroicons/react/outline'
 import DropDown from './DropDown'
 
@@ -39,7 +37,7 @@ const Header = ({theme, setCurrentTheme}) => {
                 
                 <HeaderSearch>
                     <input type="text" placeholder="Search Templates" onChange={handleInput} value={input} disabled={loading || error} />
-                    <SearchIcon style={styles.searchIcon} onClick={toggleTheme} />
+                    <SearchIcon style={styles.smallIcon} onClick={toggleTheme} />
                 </HeaderSearch>
                 
                 <HeaderDropDownContainer>
