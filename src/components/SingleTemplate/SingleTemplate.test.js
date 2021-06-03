@@ -1,11 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import SingleTemplate from '../SingleTemplate'
-import checkPropTypes from 'check-prop-types';
-
-const checkProps = (component, expectedProps) => checkPropTypes(component.propTypes, expectedProps, 'props', component.name);
-
-const findByTestAttr = (component, attr) => component.find(`[data-test='${attr}']`)
+import SingleTemplate from '.'
+import { findByTestAttr, checkProps } from '../testsUtils'
 
 describe('Single Template Component', () => {
     describe('Checking PropTypes', () => {

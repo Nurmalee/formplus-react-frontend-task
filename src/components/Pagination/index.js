@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import { PaginationContainer, ScreenPagination, BackToStart } from './styles'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { nextPage, previousPage } from '../redux/actionsCreators/pagination'
-import { pageNumberClick } from '../redux/actionsCreators/pagination'
+import { nextPage, previousPage } from '../../redux/actionsCreators/pagination'
+import { pageNumberClick } from '../../redux/actionsCreators/pagination'
 import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
-import '../styles/styles.css'
-import { styles } from '../styles/styles'
+import '../../styles/styles.css'
+import { styles } from '../../styles/styles'
 
 const Pagination = () => {
 
@@ -45,12 +45,6 @@ const Pagination = () => {
         }
     };
 
-    //BRIEF STYLING FOR UNSTYLED PAGE NUMBERS AND PAGE ITEMS
-    const unStyledPageListItem = {
-        border: "none",
-        padding: "3px 5px"
-    }
-
     //CONDITIONALLY RENDER PAGINATION CONTAINER
     if(loading || error || activeTemplates?.length === 0) {
         return null
@@ -67,8 +61,8 @@ const Pagination = () => {
 
             <ScreenPagination>
                 <li>{currentPage}</li>
-                <li style={unStyledPageListItem}>of</li>
-                <li style={unStyledPageListItem} id={pages.length} onClick={handlePageNumberClick}>{pages.length}</li>
+                <li style={styles.unStyledPageListItem}>of</li>
+                <li style={styles.unStyledPageListItem} id={pages.length} onClick={handlePageNumberClick}>{pages.length}</li>
             </ScreenPagination>
 
             <button onClick={handleNextbtn} disabled={currentPage === pages.length ? true : false}>
@@ -84,66 +78,3 @@ const Pagination = () => {
 }
 
 export default Pagination
-
-const PaginationContainer = styled.div`
-    width: ${styles.containerWidth};
-    margin: 0 auto;
-    margin-top: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    > ul {
-        list-style: none;
-        flex-wrap: wrap;
-
-        > li {
-            border: 1px solid ${props => props.theme.borderColor};
-            border-radius: 3px;
-            color: ${props => props.theme.textColor};
-            padding: 3px 10px;
-            cursor: pointer;
-            margin-right: 3px;
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    }
-
-    > button {
-        display: flex;
-        padding: 12px;
-        border: none;
-        background-color: transparent;
-        color: ${props => props.theme.textColor};
-        font-size: 11px;
-        cursor: pointer;
-        text-transform: capitalize;
-
-        &:disabled {
-            color: #ddd;
-        }
-
-        @media screen and (min-width: 700px){
-            font-size: 13px;
-            padding: 12px 20px;
-        }
-    }
-`
-
-const ScreenPagination = styled.ul`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`
-
-const BackToStart = styled.div`
-    cursor: pointer;
-    font-size: 11px;
-    margin-top: 40px;
-    text-align: center;
-    text-transform: capitalize;
-    padding-left: 17px;
-    color: ${props => props.theme.textColor};
-`

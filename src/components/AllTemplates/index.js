@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import { TemplatesHeader, TemplateCategory, TemplateCount, LoadingImage, ErrorNote, TemplatesGrid, NoSearchMatchesFound } from './styles'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchTemplates } from '../redux/actionsCreators/templates'
+import { fetchTemplates } from '../../redux/actionsCreators/templates'
 import { ExclamationCircleIcon, QuestionMarkCircleIcon, CubeTransparentIcon } from '@heroicons/react/outline'
-import { styles } from '../styles/styles'
-import '../styles/styles.css'
-import SingleTemplate from './SingleTemplate'
+import { styles } from '../../styles/styles'
+import '../../styles/styles.css'
+import SingleTemplate from '../SingleTemplate'
 
 const Templates = () => {
 
@@ -63,73 +63,3 @@ const Templates = () => {
 }
 
 export default Templates
-
-const TemplatesHeader = styled.div`
-    padding-bottom: 20px;
-    width: ${styles.containerWidth};
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    text-transform: capitalize;
-    justify-content: space-between;
-    color: ${props => props.theme.textColor};
-`
-
-const TemplateCategory = styled.p`
-    font-weight: 500;
-    font-size: 14px;
-`
-
-const TemplateCount = styled.p`
-    font-weight: 400;
-    font-size: 12px;
-    color: #C4C4C4;
-    text-transform: capitalize;
-`
-
-const LoadingImage = styled.div`
-    text-align: center;
-    margin: 40px 0 20px 0;
-
-    > p {
-        color: ${props => props.theme.textColor};
-    }
-
-    > img {
-        height: 230px;
-        object-fit: contain;
-    }
-`
-
-const ErrorNote = styled.div`
-    text-align: center;
-    margin: 40px 0 20px 0;
-
-    > p {
-        color: ${props => props.theme.textColor};
-    }
-`
-
-const TemplatesGrid = styled.section`
-    width: 90vw;
-    margin: 0 auto;
-    display: grid;
-    gap: 40px;
-
-    @media screen and (min-width: 600px) {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    @media screen and (min-width: 1000px) {
-        grid-template-columns: repeat(3, 1fr);
-    }
-`
-
-const NoSearchMatchesFound = styled.div`
-    text-align: center;
-    margin: 40px 0 20px 0;
-
-    > p {
-        color: ${props => props.theme.textColor};
-    }
-`

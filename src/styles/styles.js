@@ -18,4 +18,10 @@ export const styles = {
         padding: "0 10px",
         color: "#C4C4C4",
     },
+
+    //BRIEF STYLING FOR UNSTYLED PAGE NUMBERS AND PAGE ITEMS
+    unStyledPageListItem: {
+        border: "none",
+        padding: "3px 5px"
+    }
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Notification from '../Notification'
+import Notification from '.'
+import { findByTestAttr } from '../testsUtils'
 
 const compSelector = () => shallow(<Notification/>)
-
-const findByTestAttr = (component, attr) => component.find(`[data-test='${attr}']`)
 
 describe('Notification Component', () => {
     it('renders without crashing', () => {

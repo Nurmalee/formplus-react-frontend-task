@@ -1,13 +1,6 @@
 import moxios from 'moxios';
-import { createStore, applyMiddleware } from 'redux'
-import thunk from 'redux-thunk'
-import reducer from '../../../redux/reducer'
-import { fetchTemplates } from '../../../redux/actionsCreators/templates'
-
-export const testStore = (initialState) => {
-    const createStoreWithMiddleware = applyMiddleware(thunk)(createStore);
-    return createStoreWithMiddleware(reducer, initialState);
-};
+import { testStore } from '../testsUtils'
+import { fetchTemplates } from '../../redux/actionsCreators/templates'
 
 describe('fetchTemplates action', () => {
 
