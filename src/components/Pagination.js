@@ -76,8 +76,8 @@ const Pagination = () => {
                 <ChevronRightIcon style={{height: "18px"}} />
             </button>
            
-            
         </PaginationContainer>
+
         {currentPage >= 40 && <BackToStart onClick={handlePageNumberClick} id={1}>back to page one </BackToStart>}
         </>
     )
