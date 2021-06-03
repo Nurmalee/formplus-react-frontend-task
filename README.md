@@ -46,6 +46,10 @@ The Header bar of the app contains a search input field that makes it possible t
 - Blank spaces are inclusive as characters.
 - Absence or no matches found error is being handled.
 
+### `Themes: DARK AND LIGHT`
+
+Light themes is the default. Dark theme is also implemeted.
+
 ### `Other Extra Functionalities`
 - A spinning loading icon is provided to indicate loading state during data fetch
 - Error during data fetching is handled and indicated with an error icon on failed loading
