@@ -55,7 +55,7 @@ const Pagination = () => {
         <PaginationContainer>
 
             <button onClick={handlePrevbtn} disabled={currentPage === pages[0] ? true : false}>
-                <ChevronLeftIcon style={{height: "18px"}} /> 
+                <ChevronLeftIcon style={{height: "18px", visibility: currentPage !== pages[0] ? 'visible' : 'hidden' }} />
                 previous
             </button>
 
@@ -67,7 +67,7 @@ const Pagination = () => {
 
             <button onClick={handleNextbtn} disabled={currentPage === pages.length ? true : false}>
                 next
-                <ChevronRightIcon style={{height: "18px"}} />
+                <ChevronRightIcon style={{height: "18px", visibility: currentPage !== pages.length ? 'visible' : 'hidden' }} />
             </button>
            
         </PaginationContainer>
