@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Summary of this Project (FormPlus Templates Task)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### `List of Stack/Technologies Used`
 
-In the project directory, you can run:
+a. React - Functional Components with hooks.\
+b. Redux - State Management Library.\
+c. Styled Components - CSS in JS Styling Effect.\
+d. Hero Icons - For Crisp Icons.\
+e. Jest & Enzyme - For Unit & Integration Testing Concerns/Completion.
 
-### `npm start`
+## Highlight of Functionalities Implemented & Inclusive
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Auto-Fetch Templates from API`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The App is able to fetch templates properties from the dummy API on first load and on every reload
 
-### `npm test`
+### `Pagination`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The response from the API is immediately displayed on a paginated platform to avoid overloading or overuse of memory in local browser or machine storage. In this implementation,
+- 15 template objects are displayed per page.
+- The number of pages is handled by a definitive calculation.
+- Next and Previous buttons are provided for page navigation and are disabled on reaching extreme endpoints (at page 1 and last page).
 
-### `npm run build`
+### `Filter Templates by Categories`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The Header bar of the app contains three(3) implementations of dropdown components, one of which helps in the seemless filtration of templates based in their categorical descriptions in which case a template may belong to just one, two or more categories  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `Order Templates by Name`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The Header bar of the app contains three(3) implementations of dropdown components, one of which helps in the seemless ordering of templates alphabetically in ascending or descending format based on the letters of their title/name. In this implementation,
+- The default order as recieved from the API is preserved.
+- The active category/filter is kept in memory/preserved and can be ordered through.
 
-### `npm run eject`
+### `Order Templates by Date`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+The Header bar of the app contains three(3) implementations of dropdown components, one of which helps in the seemless ordering of templates in ascending or descending format based on their dates. In this implementation,
+- The default order as recieved from the API is preserved.
+- The active category/filter is kept in memory/preserved and can be ordered through.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `Search Templates by Name`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The Header bar of the app contains a search input field that makes it possible to instantaneously search through the list of templates by characters/letters present in their names. In this implementation,
+- Case sensitivity is non-existent.
+- Blank spaces are inclusive as characters.
+- Absence or no matches found error is being handled.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### `Other Extra Functionalities`
+- A spinning loading icon is provided to indicate loading state during data fetch
+- Error during data fetching is handled and indicated with an error icon on failed loading
+- The search input and the filter/order dropdown components are disabled during loading state or when data is being fetched from the database
+- Pagination is made unavailabe or unrendered during loading state or when data is being fetched from the database or when search input does not match any template
+- The intentional disabling of components is to prevent tampering with state data when other all components are not yet avalibale
+- Jump to last page on last page number click is possible
+- Go back to first page/page one link shows up after exceeding page 40 is clickable 
