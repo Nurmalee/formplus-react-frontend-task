@@ -1,11 +1,12 @@
-import { TemplatesHeader, TemplateCategory, TemplateCount, LoadingImage, ErrorNote, TemplatesGrid, NoSearchMatchesFound } from './styles'
+import { TemplatesHeader, TemplateCategory, TemplateCount, ErrorNote, TemplatesGrid, NoSearchMatchesFound } from './styles'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchTemplates } from '../../redux/actionsCreators/templates'
-import { ExclamationCircleIcon, QuestionMarkCircleIcon, CubeTransparentIcon } from '@heroicons/react/outline'
+import { ExclamationCircleIcon, QuestionMarkCircleIcon } from '@heroicons/react/outline'
 import { styles } from '../../styles/styles'
 import '../../styles/styles.css'
 import SingleTemplate from '../SingleTemplate'
+import TemplateSkeleton from '../../skeletons/TemplateSkeleton'
 
 const Templates = () => {
 
@@ -36,11 +37,14 @@ const Templates = () => {
 
             {
                 loading ? 
-                    <LoadingImage>
-                        {/* <img src={loadingImg} alt="loading"/> <p>loading templates...</p> */}
-                        <CubeTransparentIcon className="loading" /> 
-                        <p>loading templates...</p>
-                    </LoadingImage> : 
+                    // <LoadingImage>
+                    //     <CubeTransparentIcon className="loading" /> 
+                    //     <p>loading templates...</p>
+                    // </LoadingImage>
+                    
+                    <TemplatesGrid>
+                        {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15].map(n => <TemplateSkeleton key={n} />)} 
+                    </TemplatesGrid>  : 
                 error ? 
                     <ErrorNote>
                         <ExclamationCircleIcon style={styles.largeIcon} />
@@ -51,7 +55,7 @@ const Templates = () => {
                     {currentTemplates.map((template, index) => <SingleTemplate key={index} {...template} />)} 
                 </TemplatesGrid>    
             }
-
+ 
             {(!loading && activeTemplates?.length === 0) && 
                 <NoSearchMatchesFound>
                     <QuestionMarkCircleIcon style={styles.largeIcon} />
