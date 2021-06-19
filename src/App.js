@@ -8,8 +8,9 @@ import Pagination from './components/Pagination'
 const lightTheme = {
   backgroundColor: "rgb(254,254,254)",
   textColor: "#555",
-  borderColor: "#AAA",
+  borderColor: "#DDD",
   boxShadow: "rgba(0, 0, 0, 0.08)",
+  skeletonTextBg: "rgb(250, 250, 250)"
 }
 
 const darkTheme = {
@@ -17,6 +18,7 @@ const darkTheme = {
   textColor: "rgb(213,213,213)",
   borderColor: "#555",
   boxShadow: "rgba(0, 0, 0, 0.72)",
+  skeletonTextBg: "rgb(100, 100, 100)"
 }
 
 const themes = {
