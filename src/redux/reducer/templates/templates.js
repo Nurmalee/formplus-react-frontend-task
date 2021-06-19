@@ -25,7 +25,7 @@ const sortDynamically = (property,order) => {
 
 const initialState = {
     templates: [],
-    activeTemplates: [],
+    loading: true,
     filterBy: 'All'
 }
   
@@ -34,8 +34,6 @@ const templateReducer = (state = initialState, action) => {
         case ACTION.FETCH_TEMPLATES_LOADING:
             return {
                 ...state,
-                loading: true,
-                templates: [],
             }
 
         case ACTION.FETCH_TEMPLATES_SUCCESS:
@@ -44,7 +42,6 @@ const templateReducer = (state = initialState, action) => {
                 loading:false,
                 templates: action.payload,
                 activeTemplates: action.payload,
-                filterBy: 'All'
             }
 
         case ACTION.FETCH_TEMPLATES_FAILED:
