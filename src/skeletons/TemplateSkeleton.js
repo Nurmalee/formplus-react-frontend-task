@@ -66,7 +66,7 @@ const ShinnerWrapper = styled.div`
     left: 0;
     height: 100%;
     width: 100%;
-    animation: ${shinner} 2.5s infinite;
+    animation: ${shinner} 1.5s infinite;
 `
 const Shinner = styled.div`
     background-color: ${props => props.theme.skeletonShinnerBg};

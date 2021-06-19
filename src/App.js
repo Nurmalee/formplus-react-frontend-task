@@ -11,7 +11,7 @@ const lightTheme = {
   borderColor: "#DDD",
   boxShadow: "rgba(0, 0, 0, 0.08)",
   skeletonTextBg: "rgb(250, 250, 250)",
-  skeletonShinnerBg: "rgba(254, 254, 254, 0.4)"
+  skeletonShinnerBg: "rgba(254, 254, 254, 0.6)"
 }
 
 const darkTheme = {
@@ -20,7 +20,7 @@ const darkTheme = {
   borderColor: "#555",
   boxShadow: "rgba(0, 0, 0, 0.72)",
   skeletonTextBg: "rgb(100, 100, 100)",
-  skeletonShinnerBg: "rgba(110, 110, 110, 0.1)"
+  skeletonShinnerBg: "rgba(110, 110, 110, 0.3)"
 }
 
 const themes = {
