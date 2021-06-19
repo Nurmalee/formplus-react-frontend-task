@@ -55,12 +55,15 @@ const templateReducer = (state = initialState, action) => {
 
         case ACTION.FILTER_TEMPLATES:
             //TO RETURN FILTERED TEMPLATES BASED ON CATEGORY CLICKED
-            let filteredTemplates = state.templates?.filter(template => action.payload === "All" ? template : template.category.includes(action.payload));
+            // let filteredTemplates = state.templates?.filter(template => action.payload === "All" ? template : template.category.includes(action.payload));
+
+            //TO RETURN FILTERED TEMPLATES BASED ON CATEGORY CLICKED AND BASED ON THE SEARCH INPUT IF ANY
+            let filteredTemplates = state.templates?.filter(template => action.payload === "All" && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : action.payload === "All") ? template : (template.category.includes(action.payload) && state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template.category.includes(action.payload) ));
 
             return {
                 ...state,
                 activeTemplates: filteredTemplates,
-                filterBy: action.payload
+                filterBy: action.payload,
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:
@@ -69,12 +72,16 @@ const templateReducer = (state = initialState, action) => {
 
             return {
                 ...state,
-                activeTemplates: searchedTemplates
+                activeTemplates: searchedTemplates,
+                searchTerm: action.payload
             }
         
         case ACTION.SORT_TEMPLATES_BY_NAME_ORDER:
             //TO RETURN ORDERED TEMPLATES BY NAME BASED ON CATEGORY BEING FILTERED TO
-            let sortedTemplatesByName = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
+            // let sortedTemplatesByName = state.templates?.filter(template => state.filterBy === 'All' ||  template.category.includes(state.filterBy) ? template : null)
+
+            //TO RETURN ORDERED TEMPLATES BY NAME BASED ON CATEGORY BEING FILTERED TO AND BASED ON THE SEARCH INPUT IF ANY
+            let sortedTemplatesByName = state.templates?.filter(template => (state.filterBy === 'All' && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template)) || (template.category.includes(state.filterBy) && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template.category.includes(state.filterBy))) ? template : null)
 
             sortedTemplatesByName = sortedTemplatesByName.sort(sortDynamically("name", action.payload.toLowerCase()))
 
@@ -85,7 +92,10 @@ const templateReducer = (state = initialState, action) => {
 
         case ACTION.SORT_TEMPLATES_BY_DATE_ORDER:
             //TO RETURN ORDERED TEMPLATES BY DATE BASED ON CATEGORY BEING FILTERED TO
-            let sortedTemplatesByDate = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
+            // let sortedTemplatesByDate = state.templates?.filter(template => state.filterBy === 'All' || template.category.includes(state.filterBy) ? template : null)
+
+            //TO RETURN ORDERED TEMPLATES BY DATE BASED ON CATEGORY BEING FILTERED TO AND BASED ON THE SEARCH INPUT IF ANY
+            let sortedTemplatesByDate = state.templates?.filter(template => (state.filterBy === 'All' && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template)) || (template.category.includes(state.filterBy) && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template.category.includes(state.filterBy))) ? template : null)
             
             sortedTemplatesByDate = sortedTemplatesByDate.sort(sortDynamically("created", action.payload.toLowerCase()))
 
