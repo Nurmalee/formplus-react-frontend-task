@@ -4,6 +4,9 @@ import Header from './components/Header'
 import Notification from './components/Notification'
 import Templates from './components/AllTemplates'
 import Pagination from './components/Pagination'
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
 
 const lightTheme = {
   backgroundColor: "rgb(254, 254, 254)",
@@ -33,17 +36,19 @@ const App = () => {
   const [currentTheme, setCurrentTheme] = useState("light")
 
   return (
-    <ThemeProvider theme={themes[currentTheme]}>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={themes[currentTheme]}>
 
-      <Header theme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+        <Header theme={currentTheme} setCurrentTheme={setCurrentTheme}/>
 
-      <Body>
-        <Notification />
-        <Templates />
-        <Pagination />
-      </Body>
+        <Body>
+          <Notification />
+          <Templates />
+          <Pagination />
+        </Body>
 
-    </ThemeProvider>
+      </ThemeProvider>
+     </QueryClientProvider>
   )
 }
 

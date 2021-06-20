@@ -7,7 +7,7 @@ import { styles } from '../../styles/styles'
 import '../../styles/styles.css'
 import SingleTemplate from '../SingleTemplate'
 import TemplateSkeleton from '../../skeletons/TemplateSkeleton'
-import {usePaginatedQuery, useQuery} from 'react-query'
+// import {usePaginatedQuery, useQuery} from 'react-query'
 
 const Templates = () => {
 
@@ -15,8 +15,8 @@ const Templates = () => {
     const {activeTemplates, filterBy, loading, error} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
 
-    const {data, status} = useQuery('templates', fetchTemplates )
-    console.log(data, status);
+    // const {data, status} = useQuery('templates', fetchTemplates )
+    // console.log(data, status);
 
     useEffect(() => {
         dispatch(fetchTemplates())
