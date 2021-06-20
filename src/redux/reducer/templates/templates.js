@@ -52,15 +52,16 @@ const templateReducer = (state = initialState, action) => {
 
         case ACTION.FILTER_TEMPLATES:
             //TO RETURN FILTERED TEMPLATES BASED ON CATEGORY CLICKED
-            // let filteredTemplates = state.templates?.filter(template => action.payload === "All" ? template : template.category.includes(action.payload));
+            let filteredTemplates = state.templates?.filter(template => action.payload === "All" ? template : template.category.includes(action.payload));
 
             //TO RETURN FILTERED TEMPLATES BASED ON CATEGORY CLICKED AND BASED ON THE SEARCH INPUT IF ANY
-            let filteredTemplates = state.templates?.filter(template => action.payload === "All" && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : action.payload === "All") ? template : (template.category.includes(action.payload) && state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template.category.includes(action.payload) ));
+            // let filteredTemplates = state.templates?.filter(template => action.payload === "All" && (state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : action.payload === "All") ? template : (template.category.includes(action.payload) && state.searchTerm?.length > 0 ? template.name.toLowerCase().includes(state.searchTerm) : template.category.includes(action.payload) ));
 
             return {
                 ...state,
                 activeTemplates: filteredTemplates,
                 filterBy: action.payload,
+                searchTerm: ''
             }
         
         case ACTION.SEARCH_TEMPLATES_BY_NAME:

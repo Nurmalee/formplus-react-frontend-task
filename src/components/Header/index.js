@@ -40,9 +40,9 @@ const Header = ({theme, setCurrentTheme}) => {
                 
                 <HeaderDropDownContainer>
                     <p>sort by: </p>
-                    <DropDown legend="categories" options={uniqueCategories} />
-                    <DropDown legend="order" options={order} />
-                    <DropDown legend="date" options={order} />
+                    <DropDown legend="categories" options={uniqueCategories} setInput={setInput} />
+                    <DropDown legend="order" options={order} setInput={setInput} />
+                    <DropDown legend="date" options={order} setInput={setInput} />
                 </HeaderDropDownContainer>
 
                 <ThemeToggler onClick={toggleTheme}>

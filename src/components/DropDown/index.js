@@ -2,7 +2,7 @@ import { DropDownFieldSet } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
 import { filterTemplates, orderByName, orderByDate } from '../../redux/actionsCreators/templates'
 
-const DropDown = ({legend, options}) => {
+const DropDown = ({legend, options, setInput}) => {
 
     const dispatch = useDispatch()
 
@@ -14,6 +14,7 @@ const DropDown = ({legend, options}) => {
 
         if(legend === 'categories'){
             dispatch(filterTemplates(selectedOption))
+            setInput('')
         }
 
         if(legend === 'order'){
