@@ -1,8 +1,12 @@
+import styled from 'styled-components'
+import { PaginationContainer } from './Pagination/styles'
+
 const QueryPagination = () => {
     return (
-        <div>
+        <PaginationContainer>
             
-        </div>
+            
+        </PaginationContainer>
     )
 }
 
