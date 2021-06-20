@@ -7,12 +7,16 @@ import { styles } from '../../styles/styles'
 import '../../styles/styles.css'
 import SingleTemplate from '../SingleTemplate'
 import TemplateSkeleton from '../../skeletons/TemplateSkeleton'
+import {usePaginatedQuery, useQuery} from 'react-query'
 
 const Templates = () => {
 
     const dispatch = useDispatch()
     const {activeTemplates, filterBy, loading, error} = useSelector(state => state.templates)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
+
+    const {data, status} = useQuery('templates', fetchTemplates )
+    console.log(data, status);
 
     useEffect(() => {
         dispatch(fetchTemplates())
@@ -53,7 +57,7 @@ const Templates = () => {
           
                 <TemplatesGrid data-test='templatesGrid'>
                     {currentTemplates?.map((template, index) => <SingleTemplate key={index} {...template} />)} 
-                </TemplatesGrid>    
+                </TemplatesGrid>
             }
  
             {(!loading && activeTemplates?.length === 0) && 
