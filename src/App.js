@@ -1,9 +1,12 @@
 import { useState } from 'react'
 import styled, {ThemeProvider} from 'styled-components'
-import Header from './components/Header'
-import Notification from './components/Notification'
-import Templates from './components/AllTemplates'
-import Pagination from './components/Pagination'
+// import Header from './components/Header'
+// import Notification from './components/Notification'
+// import Templates from './components/AllTemplates'
+// import Pagination from './components/Pagination'
+import Header2 from './components/Header2'
+import Worksheets from './components/Worksheets/Worksheets'
+import Pagination2 from './components/Pagination2'
 
 const lightTheme = {
   backgroundColor: "rgb(254, 254, 254)",
@@ -35,12 +38,14 @@ const App = () => {
   return (
     <ThemeProvider theme={themes[currentTheme]}>
 
-      <Header theme={currentTheme} setCurrentTheme={setCurrentTheme}/>
-
+      {/* <Header theme={currentTheme} setCurrentTheme={setCurrentTheme}/> */}
+      <Header2 />
       <Body>
-        <Notification />
-        <Templates />
-        <Pagination />
+        {/* <Notification /> */}
+        {/* <Templates /> */}
+        <Worksheets />
+        {/* <Pagination /> */}
+        <Pagination2 />
       </Body>
 
     </ThemeProvider>
