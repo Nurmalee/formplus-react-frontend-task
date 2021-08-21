@@ -7,11 +7,11 @@ import { ChevronRightIcon, ChevronLeftIcon } from '@heroicons/react/outline'
 import '../../styles/styles.css'
 import { styles } from '../../styles/styles'
 
-const Pagination = () => {
+const Pagination2 = () => {
 
     const dispatch = useDispatch()
 
-    const {activeTemplates, loading, error} = useSelector(state => state.templates)
+    const {activeWorksheets, loading, error} = useSelector(state => state.worksheets)
     const {currentPage, itemsPerPage} = useSelector(state => state.pagination)
 
     const pageNumberLimit = 4;
@@ -19,7 +19,7 @@ const Pagination = () => {
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
     const pages = [];
-    for (let i = 1; i <= Math.ceil(activeTemplates?.length / itemsPerPage); i++) {
+    for (let i = 1; i <= Math.ceil(activeWorksheets?.length / itemsPerPage); i++) {
         pages.push(i);
     }
 
@@ -46,7 +46,7 @@ const Pagination = () => {
     };
 
     //CONDITIONALLY RENDER PAGINATION CONTAINER
-    if(loading || error || activeTemplates?.length === 0) {
+    if(loading || error || activeWorksheets?.length === 0) {
         return null
     }
 
@@ -77,4 +77,4 @@ const Pagination = () => {
     )
 }
 
-export default Pagination
+export default Pagination2

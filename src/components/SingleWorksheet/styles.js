@@ -1,25 +1,6 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-const SingleWorksheet = ({image, bigImage, description, title}) => {
-    return (
-        <WorksheetWrapper>
-            <WorksheetImage>
-                <img src={image || bigImage} alt={`${title}_image`} />
-            </WorksheetImage>
-            <WorksheetInfo>
-                <h3>{title}</h3>
-                <p>{description.length > 70 ? `${description.substring(0, 70)}...` : description}</p>
-            </WorksheetInfo>
-            <ButtonContainer>
-                <button>Download</button>
-            </ButtonContainer>
-        </WorksheetWrapper>
-    )
-}
-
-export default SingleWorksheet
-
-const WorksheetWrapper = styled.div`
+export const WorksheetWrapper = styled.div`
     border-radius: 3px;
     /* box-shadow: 0px 4px 10px teal; */
     box-shadow: 0px 5px 10px #ccc;
@@ -33,7 +14,7 @@ const WorksheetWrapper = styled.div`
     }
 `
 
-const WorksheetInfo = styled.div`
+export const WorksheetInfo = styled.div`
     padding: 10px 25px;
     text-align: center;
 
@@ -50,7 +31,7 @@ const WorksheetInfo = styled.div`
     }
 `
 
-const WorksheetImage = styled.div`
+export const WorksheetImage = styled.div`
     height: 200px;
     width: 100%;
     border-top-right-radius: 3px;
@@ -65,7 +46,7 @@ const WorksheetImage = styled.div`
     }
 `
 
-const ButtonContainer = styled.div`
+export const ButtonContainer = styled.div`
     position: absolute;
     top: 0;
     left: 0;
@@ -77,12 +58,16 @@ const ButtonContainer = styled.div`
     place-items: center;
     visibility: hidden;
 
-    > button {
+    > a > button {
         padding: 10px 15px;
         background-color: brown;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
+
+        :hover {
+            background-color: red;
+        }
     }
 `

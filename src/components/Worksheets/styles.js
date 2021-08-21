@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { styles } from '../../styles/styles'
 
-export const TemplatesHeader = styled.div`
+export const WorksheetsHeader = styled.div`
     padding-bottom: 20px;
     width: ${styles.containerWidth};
     margin: 0 auto;
@@ -12,12 +12,12 @@ export const TemplatesHeader = styled.div`
     color: ${props => props.theme.textColor};
 `
 
-export const TemplateCategory = styled.p`
+export const WorksheetsCategory = styled.p`
     font-weight: 500;
     font-size: 14px;
 `
 
-export const TemplateCount = styled.p`
+export const WorksheetsCount = styled.p`
     font-weight: 400;
     font-size: 12px;
     color: #C4C4C4;
@@ -47,7 +47,7 @@ export const ErrorNote = styled.div`
     }
 `
 
-export const TemplatesGrid = styled.section`
+export const WorksheetsGrid = styled.section`
     width: 90vw;
     margin: 0 auto;
     display: grid;

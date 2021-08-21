@@ -1,37 +1,39 @@
-import { HeaderContainer, HeaderMain, HeaderSearch, HeaderDropDownContainer, ThemeToggler } from './styles'
+import { HeaderContainer, HeaderMain, HeaderSearch, HeaderDropDownContainer } from './styles'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { searchedTemplates } from '../../redux/actionsCreators/templates'
+import { searchedWorksheets } from '../../redux/actionsCreators/worksheets'
 import { styles } from '../../styles/styles'
-import { SearchIcon, FireIcon } from '@heroicons/react/outline'
-import DropDown from '../DropDown'
+import { SearchIcon } from '@heroicons/react/outline'
+import DropDown2 from '../DropDown2'
 
-const Header = ({theme, setCurrentTheme}) => {
+const Header = () => {
 
     const [input, setInput] = useState('')
 
-    const toggleTheme = () => {
-        theme === 'light' ?  setCurrentTheme('dark') : setCurrentTheme('light')
-    }
-
     const dispatch = useDispatch()
 
-    const { templates, loading, error } = useSelector(state => state.templates)
+    const { worksheets, loading, error } = useSelector(state => state.worksheets)
 
     const handleInput = (e) => {
         setInput(e.target.value)
-        dispatch(searchedTemplates(e.target.value.toLowerCase()))
+        dispatch(searchedWorksheets(e.target.value.toLowerCase()))
     }
 
-    //Dynamically pulling categories from available templates
-    const categories = templates?.map(template => ['All', ...template.category]).join(',').split(',')
-    const uniqueCategories = [...new Set (categories)]
+    //Dynamically pull a unique array of levels from available worksheets
+    const levels = worksheets?.map(worksheet => worksheet.Level)
+    const uniqueLevels = [...new Set (levels)]
 
-    const order = ["default", "ascending", "descending"]
+    //Dynamically pull a unique array of subjects from available worksheets
+    const subjects = worksheets?.map(worksheet => worksheet.Subjects)
+    const uniqueSubjects = ["All", ...new Set (subjects)]
+
+    //Dynamically pull a unique array of topics from available worksheets
+    const topics = worksheets?.map(worksheet => worksheet.Topics)
+    const uniqueTopics = ["All", ...new Set (topics)]
 
     return (
         <HeaderContainer>
-
+            <h1>WORKSHEETS</h1>
             <HeaderMain>
                 <HeaderSearch>
                     <input type="text" placeholder="Search Templates" onChange={handleInput} value={input} disabled={loading || error} />
@@ -39,17 +41,11 @@ const Header = ({theme, setCurrentTheme}) => {
                 </HeaderSearch>
                 
                 <HeaderDropDownContainer>
-                    <p>sort by: </p>
-                    <DropDown legend="categories" options={uniqueCategories} setInput={setInput} />
-                    <DropDown legend="order" options={order} setInput={setInput} />
-                    <DropDown legend="date" options={order} setInput={setInput} />
+                    <p>Filter by: </p>
+                    <DropDown2 legend="levels" options={uniqueLevels} setInput={setInput} />
+                    <DropDown2 legend="subjects" options={uniqueSubjects} setInput={setInput} />
+                    <DropDown2 legend="topics" options={uniqueTopics} setInput={setInput} />
                 </HeaderDropDownContainer>
-
-                <ThemeToggler onClick={toggleTheme}>
-                    <p>Switch Mode</p>
-                    <FireIcon style={styles.smallIcon} />
-                </ThemeToggler>
-
             </HeaderMain>
 
         </HeaderContainer>
